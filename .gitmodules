@@ -1,0 +1,3 @@
+[submodule "GKSwitch/Assets/Plugins/Shared"]
+	path = GKSwitch/Assets/Plugins/Shared
+	url = git@gitlab.com:BigpointIndieReboot/Plugins.git
