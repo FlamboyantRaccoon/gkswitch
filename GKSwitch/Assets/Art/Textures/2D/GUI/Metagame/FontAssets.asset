@@ -1,0 +1,617 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
+  m_Name: FontAssets
+  m_EditorClassIdentifier: 
+  hashCode: 2087449424
+  material: {fileID: 21631344492897528}
+  materialHashCode: 0
+  m_Version: 1.1.0
+  spriteSheet: {fileID: 2800000, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: FontAssets_coin
+    m_HashCode: -2102693500
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 1
+    m_Scale: 1
+    m_Name: FontAssets_gem
+    m_HashCode: -324022816
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 2
+    m_Scale: 1
+    m_Name: FontAssets_ticket
+    m_HashCode: -256523253
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: FontAssets_level
+    m_HashCode: -686542951
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: FontAssets_ticketg
+    m_HashCode: 124667148
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 5
+    m_Scale: 1
+    m_Name: FontAssets_joker
+    m_HashCode: -679378538
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 6
+    m_Scale: 1
+    m_Name: FontAssets_blason
+    m_HashCode: -658325934
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 7
+    m_Scale: 1
+    m_Name: FontAssets_emote
+    m_HashCode: -676031111
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 8
+    m_Scale: 1
+    m_Name: FontAssets_quests
+    m_HashCode: -70258086
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 9
+    m_Scale: 1
+    m_Name: FontAssets_objective
+    m_HashCode: -7727648
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 10
+    m_Scale: 1
+    m_Name: FontAssets_crown
+    m_HashCode: -668390744
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 11
+    m_Scale: 1
+    m_Name: FontAssets_castle
+    m_HashCode: -598707005
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 12
+    m_Scale: 1
+    m_Name: FontAssets_versus1
+    m_HashCode: -1291667798
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 13
+    m_Scale: 1
+    m_Name: FontAssets_versus2
+    m_HashCode: -1291667799
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 14
+    m_Scale: 1.5
+    m_Name: FontAssets_ad
+    m_HashCode: 771084330
+  - m_ElementType: 2
+    m_Unicode: 0
+    m_GlyphIndex: 15
+    m_Scale: 1
+    m_Name: FontAssets_gift
+    m_HashCode: -2102830797
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 192
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300000, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 1
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 64
+      m_Y: 192
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300002, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 2
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 128
+      m_Y: 192
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300004, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 192
+      m_Y: 192
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300006, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 4
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 128
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300008, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 5
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 64
+      m_Y: 128
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300012, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 6
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 128
+      m_Y: 128
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300010, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 7
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 191
+      m_Y: 128
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300014, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 8
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 64
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300016, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 9
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 64
+      m_Y: 64
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300018, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 10
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -32
+      m_HorizontalBearingY: 32
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 128
+      m_Y: 64
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300020, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 11
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -32
+      m_HorizontalBearingY: 32
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 192
+      m_Y: 64
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300022, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 12
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -32
+      m_HorizontalBearingY: 32
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 0
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300026, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 13
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -32
+      m_HorizontalBearingY: 32
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 64
+      m_Y: 0
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300024, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 14
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 50
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 128
+      m_Y: 0
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300028, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - m_Index: 15
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 60
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 192
+      m_Y: 0
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 21300030, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  spriteInfoList:
+  - id: 0
+    x: 0
+    y: 192
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_coin
+    hashCode: -2102693500
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300000, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 1
+    x: 64
+    y: 192
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_gem
+    hashCode: -324022816
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300002, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 2
+    x: 128
+    y: 192
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_ticket
+    hashCode: -256523253
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300004, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 3
+    x: 192
+    y: 192
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_level
+    hashCode: -686542951
+    unicode: 0
+    pivot: {x: -32, y: 64}
+    sprite: {fileID: 21300006, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 4
+    x: 0
+    y: 128
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_ticketg
+    hashCode: 124667148
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300008, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 5
+    x: 64
+    y: 128
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_joker
+    hashCode: -679378538
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300012, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 6
+    x: 128
+    y: 128
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_blason
+    hashCode: -658325934
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300010, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 7
+    x: 191
+    y: 128
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_emote
+    hashCode: -676031111
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300014, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 8
+    x: 0
+    y: 64
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_quests
+    hashCode: -70258086
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300016, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 9
+    x: 64
+    y: 64
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_objective
+    hashCode: -7727648
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300018, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 10
+    x: 128
+    y: 64
+    width: 64
+    height: 64
+    xOffset: -32
+    yOffset: 32
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_crown
+    hashCode: -668390744
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300020, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 11
+    x: 192
+    y: 64
+    width: 64
+    height: 64
+    xOffset: -32
+    yOffset: 32
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_castle
+    hashCode: -598707005
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300022, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 12
+    x: 0
+    y: 0
+    width: 64
+    height: 64
+    xOffset: -32
+    yOffset: 32
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_versus1
+    hashCode: -1291667798
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300026, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 13
+    x: 64
+    y: 0
+    width: 64
+    height: 64
+    xOffset: -32
+    yOffset: 32
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_versus2
+    hashCode: -1291667799
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300024, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 14
+    x: 128
+    y: 0
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 50
+    xAdvance: 64
+    scale: 1.5
+    name: FontAssets_ad
+    hashCode: 771084330
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300028, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  - id: 15
+    x: 192
+    y: 0
+    width: 64
+    height: 64
+    xOffset: 0
+    yOffset: 60
+    xAdvance: 64
+    scale: 1
+    name: FontAssets_gift
+    hashCode: -2102830797
+    unicode: 0
+    pivot: {x: -32, y: 32}
+    sprite: {fileID: 21300030, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+  fallbackSpriteAssets: []
+--- !u!21 &21631344492897528
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TextMeshPro/Sprite
+  m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 95be496791ad633469ae11bccb2847df, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
