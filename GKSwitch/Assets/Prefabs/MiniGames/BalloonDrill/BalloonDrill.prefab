@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sMusicAmbName: 
+  m_miniGameHudPrefab: {fileID: 114377681664990884, guid: 5bdd953b2c9bc6245915ddaa3e4bf35c, type: 3}
   m_nDataTestId: -1
   m_nBotTestId: -1
   m_gameBalancing: {fileID: 11400000, guid: cc8b007afbdc9794abd9b90374a2c398, type: 2}

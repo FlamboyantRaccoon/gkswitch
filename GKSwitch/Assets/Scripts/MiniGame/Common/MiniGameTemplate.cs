@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> : MiniGame where TMgLogic: MiniGameLogic where TMgData : MiniGameBalancingData where TMgBot : MiniGameBotData where TMgHud : MiniGameBasicHud where TMgBalancing : MG_Balancing<TMgBot, TMgData>
 {
+    [SerializeField]
+    private TMgHud m_miniGameHudPrefab;
+
     [Header("Game Balancing")]
     [SerializeField]
     protected int m_nDataTestId = -1;
@@ -33,6 +36,12 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
         return dic;
     }
 
+    public override void Init()
+    {
+        base.Init();
+        InstanciateHud();
+    }
+
     protected void InitGameDataAndBot(MiniGameManager.MiniGames miniGame)
     {
         int playerLevel = 0;
@@ -52,8 +61,9 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
 
     protected void InstanciateHud()
     {
-/*        m_hud = HudManager.instance.GetHud<TMgHud>(HudManager.GameHudType.miniGame);
-        m_hud.UpdateTime(-1);*/
+        HudManager.instance.CreateMiniGameHud(m_miniGameHudPrefab.gameObject);
+        m_hud = HudManager.instance.GetHud<TMgHud>(HudManager.GameHudType.miniGame);
+        m_hud.UpdateTime(-1);
     }
 
     protected bool CheckAndUpdateTime()
@@ -66,7 +76,7 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
         }
         else
         {
- //           m_hud.UpdateTime(nRemain);
+            m_hud.UpdateTime(nRemain);
         }
         return true;
     }

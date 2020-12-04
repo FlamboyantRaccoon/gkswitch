@@ -37,7 +37,7 @@ public class BD_Logic : MiniGameLogic
 
     public void SelectObjective()
     {
-        objectiveId = m_nFuturObjectiveId;
+        OnObjectiveChange(m_nFuturObjectiveId);
     }
 
     public BD_BalloonDrill.BalloonSpawn CheckIfBalloonToSpawn()

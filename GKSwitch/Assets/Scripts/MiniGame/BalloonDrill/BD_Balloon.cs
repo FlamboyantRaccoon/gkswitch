@@ -26,7 +26,7 @@ public class BD_Balloon : MonoBehaviour
     System.Func<float> m_getSpeedMul;
     System.Func<Vector2> m_getMoveModificator;
     System.Action<BD_Balloon> m_deleteAction;
-    System.Func<int,Vector3,bool> m_isGoodTouch;
+    System.Func<int,int,Vector3,bool> m_isGoodTouch;
     System.Func<bool> m_canDestroyBalloon;
     private float m_fSpeed;
     private Vector2 m_vDir;
@@ -36,7 +36,7 @@ public class BD_Balloon : MonoBehaviour
         System.Func<Vector2> getMoveModificator, 
         System.Action<BD_Balloon> deleteAction,
         System.Func<bool> canDestroyBalloon,
-        System.Func<int,Vector3,bool> isGoodTouch)
+        System.Func<int,int,Vector3,bool> isGoodTouch)
     {
         SetColorId(nColorId);
         m_getSpeedMul = getSpeedMul;
@@ -73,13 +73,13 @@ public class BD_Balloon : MonoBehaviour
         DeleteBalloon();
     }
 
-    public void OnShoot()
+    public void OnShoot( int playerId)
     {
         Debug.Log("pouett on meee " + m_nColorId );
         if(m_canDestroyBalloon())
         {
             m_collider.enabled = false;
-            bool bGood = m_isGoodTouch != null ? m_isGoodTouch(m_nColorId, transform.position) : false;
+            bool bGood = m_isGoodTouch != null ? m_isGoodTouch(m_nColorId, playerId, transform.position) : false;
             if( bGood )
             {
                 m_animator.SetTrigger("Explosion");

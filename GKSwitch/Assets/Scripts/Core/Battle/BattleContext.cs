@@ -45,6 +45,25 @@ public class BattleContext : lwSingleton<BattleContext>
 
     }
 
+    public void CreateGKPlayers()
+    {
+        List<RRPlayerInput> players = RRInputManager.instance.playerList;
+        for (int i = 0; i < players.Count; i++)
+        {
+            GKPlayerData playerData = null;
+            if(players[i].gameObject.TryGetComponent<GKPlayerData>( out playerData ))
+            {
+                playerData.Clean();
+            }
+            else
+            {
+                playerData = players[i].gameObject.AddComponent<GKPlayerData>();
+            }
+            RegisterPlayer(playerData);
+        }
+        isPracticeGame = true;
+    }
+
     public void RegisterPlayer(GKPlayerData player)
     {
         m_playerList.Add(player);
@@ -206,7 +225,7 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public void AddPoint(int nPoints, int nPlayerId = 0)
     {
-        m_playerList[nPlayerId].m_currentScore += nPoints;
+        m_playerList[nPlayerId].AddCurrentScore( nPoints );
     }
 
     public void SetPoint(int nPoints, int nPlayerId = 0)

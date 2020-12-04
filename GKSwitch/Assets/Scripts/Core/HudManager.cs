@@ -9,7 +9,7 @@ using System;
 
 public class HudManager : lwSingletonMonoBehaviour<HudManager>
 {
-    public enum GameHudType { logoScreen, splashScreen, mainMenu }
+    public enum GameHudType { logoScreen, splashScreen, mainMenu, miniGame, countdown }
     public enum HudRootType { hud, popup, foreground }
     public enum PopupType { }
     public enum ForeHudType { aimingHud }
@@ -30,8 +30,15 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
     private ForeHudPrefab m_forePrefab = null;
     [SerializeField]
     public Image m_popupMaskPrefab = null;
-    
+    [SerializeField]
+    HudScorePop m_scorePopWinPrefab;
+    [SerializeField]
+    HudScorePop m_scorePopLosePrefab;
+
     public System.Action onPopupHideDlg { set { m_onPopupHideDlg = value; } }
+
+    private lwObjectPool<HudScorePop> m_scorePopWin;
+    private lwObjectPool<HudScorePop> m_scorePopLoose;
 
     private Image m_popupMask;
     private GameObject[] m_hudArray;
@@ -55,6 +62,11 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         m_hudArray = new GameObject[System.Enum.GetNames(typeof(GameHudType)).Length];
         m_popupArray = new GameObject[System.Enum.GetNames(typeof(PopupType)).Length];
         m_foreHudArray = new GameObject[System.Enum.GetNames(typeof(ForeHudType)).Length];
+
+        m_scorePopWin = new lwObjectPool<HudScorePop>();
+        m_scorePopWin.Init(m_scorePopWinPrefab, 10, m_hudRoot[HudRootType.hud]);
+        m_scorePopLoose = new lwObjectPool<HudScorePop>();
+        m_scorePopLoose.Init(m_scorePopLosePrefab, 10, m_hudRoot[HudRootType.hud]);
         //ShowHud(GameHudType.splashScreen);
 
     }
@@ -154,6 +166,16 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         }
     }
 
+    public void CreateMiniGameHud(GameObject prefab)
+    {
+        int nHudId = (int)GameHudType.miniGame;
+        if (m_hudArray[nHudId] != null)
+        {
+            GameObject.Destroy(m_hudArray[nHudId]);
+        }
+        m_hudArray[nHudId] = GameObject.Instantiate(prefab, m_hudRoot[HudRootType.hud]);
+    }
+
     public void ClosePopup(PopupType popupType, bool bUseAnimator = true)
     {
         if( bUseAnimator )
@@ -224,4 +246,33 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         return tmp;
     }
 
+    public Vector2 ComputeHudPosFromWorldPosition(Vector3 vWorldPos)
+    {
+        RectTransform CanvasRect = GetComponent<RectTransform>();
+        Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(vWorldPos);
+        Vector2 WorldObject_ScreenPosition = new Vector2(
+        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+        return WorldObject_ScreenPosition;
+    }
+
+    public void SpawnWinScore(Vector3 vWorldPos, int nScore, string sPrefix = "", string sSuffix = "")
+    {
+        HudScorePop pop = m_scorePopWin.GetInstance(transform);
+        pop.Setup(nScore, (HudScorePop elt) => { m_scorePopWin.PoolObject(elt); }, sPrefix, sSuffix);
+        Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos);
+        pop.transform.localPosition = vCanvasPos;
+        /*        RectTransform popRect = pop.gameObject.GetComponent<RectTransform>();
+                popRect.anchoredPosition = vCanvasPos;*/
+    }
+
+    public void SpawnLoseScore(Vector3 vWorldPos, int nScore)
+    {
+        HudScorePop pop = m_scorePopLoose.GetInstance(transform);
+        pop.Setup(nScore, (HudScorePop elt) => { m_scorePopLoose.PoolObject(elt); });
+        Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos);
+        pop.transform.position = vCanvasPos;
+        RectTransform popRect = pop.gameObject.GetComponent<RectTransform>();
+        popRect.anchoredPosition = vCanvasPos;
+    }
 }

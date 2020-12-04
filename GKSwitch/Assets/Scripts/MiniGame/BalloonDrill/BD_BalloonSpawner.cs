@@ -13,12 +13,12 @@ public class BD_BalloonSpawner : MonoBehaviour {
     System.Func<Vector2> m_getMoveModificator;
     System.Func<bool> m_canDestroyBalloon;
     lwObjectPool<BD_Balloon> m_balloonPool;
-    System.Func<int, Vector3, bool> m_drillBalloon;
+    System.Func<int,int, Vector3, bool> m_drillBalloon;
 
     public void Init(System.Func<float> getSpeedMul,
         System.Func<Vector2> getMoveModificator,
         lwObjectPool<BD_Balloon> balloonPool,
-        System.Func<int, Vector3, bool> drillBalloon,
+        System.Func<int,int, Vector3, bool> drillBalloon,
         System.Func<bool> canDestroyBalloon)
     {
         m_getSpeedMul = getSpeedMul;

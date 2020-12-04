@@ -25,7 +25,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 
     public GameObject playerInputPrefab = null;
 
-    public enum InputActionType { MoveL, MoveT, MoveR, MoveD, ButtonRight }
+    public enum InputActionType { MoveL, MoveT, MoveR, MoveD, ButtonRight, Fire }
     public enum InputType { Touch, Controller }
 
     public static InputType m_lastInputType = InputType.Touch;

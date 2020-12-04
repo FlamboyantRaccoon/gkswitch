@@ -502,10 +502,14 @@ MonoBehaviour:
     - {fileID: 1819758499225509910, guid: 7857fd7620f6b8c4f86157610eb5934e, type: 3}
     - {fileID: 9107207562066972076, guid: 455c333bc094fee4d9988762feafa733, type: 3}
     - {fileID: 9123147418622386257, guid: 7f7823e0b6ffaf24c909635702156738, type: 3}
+    - {fileID: 0}
+    - {fileID: 5565887045129541710, guid: cecac71bc312c6047b606d189509e5f4, type: 3}
     m_enumNames:
     - logoScreen
     - splashScreen
     - mainMenu
+    - miniGame
+    - countdown
   m_popupPrefab:
     m_internalArray: []
     m_enumNames: []
@@ -515,6 +519,8 @@ MonoBehaviour:
     m_enumNames:
     - aimingHud
   m_popupMaskPrefab: {fileID: 0}
+  m_scorePopWinPrefab: {fileID: 114121905676386284, guid: b6df6d6c968d0cb418e93baa10c127be, type: 3}
+  m_scorePopLosePrefab: {fileID: 114400010760095446, guid: 4b77bacf47039044ebfe865068efb4e7, type: 3}
 --- !u!114 &1179789565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +577,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

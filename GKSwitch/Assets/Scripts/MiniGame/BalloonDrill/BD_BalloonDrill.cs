@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.BalloonDrillData, BD_BalloonDrill.BalloonDrillBotData, MiniGameBasicHud, BD_Balancing>
+public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.BalloonDrillData, BD_BalloonDrill.BalloonDrillBotData, BalloonDrillHud, BD_Balancing>
 {
     public enum DisruptiveElt { random, wind, count };
 
@@ -109,9 +109,7 @@ public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.Balloo
     public override void Init()
     {
         base.Init();
-        //m_hud = HudManager.instance.GetHud<BalloonDrillHud>(HudManager.GameHudType.miniGame);
-        //SetObjective(-1);
-        //m_hud.UpdateTime(-1);
+        SetObjective(-1);
     }
 
     protected override bool UpdateInit()
@@ -149,7 +147,7 @@ public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.Balloo
 
     private void SetObjective(int nObjectiveId)
     {
-        //m_hud.SetObjective(nObjectiveId >= 0 ? m_balloonPrefab.m_spritesArray[nObjectiveId] : null);
+        m_hud.SetObjective(nObjectiveId >= 0 ? m_balloonPrefab.m_spritesArray[nObjectiveId] : null);
     }
 
     protected override void InitWarmUp()
@@ -197,20 +195,19 @@ public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.Balloo
         }
     }
 
-    private bool DrillBalloon(int nColorId, Vector3 vBalloonPos)
+    private bool DrillBalloon(int nColorId,int playerId, Vector3 vBalloonPos)
     {
-        return true;
         bool bGood = false;
         if (nColorId == (m_gameLogic.objectiveId))
         {
-            BattleContext.instance.AddPoint(m_nGoodPointsWin);
-//            HudManager.instance.SpawnWinScore(vBalloonPos, m_nGoodBalloonPointsWin);
+            BattleContext.instance.AddPoint(m_nGoodPointsWin, playerId);
+            HudManager.instance.SpawnWinScore(vBalloonPos, m_nGoodPointsWin);
             bGood = true;
         }
         else
         {
-            BattleContext.instance.AddPoint(-m_nBadBalloonPointsLost);
-//          HudManager.instance.SpawnLoseScore(vBalloonPos, -m_nBadBalloonPointsLost);
+            BattleContext.instance.AddPoint(-m_nBadBalloonPointsLost, playerId);
+            HudManager.instance.SpawnLoseScore(vBalloonPos, -m_nBadBalloonPointsLost);
             bGood = false;
         }
         m_ballonsDrillsStats[bGood ? 0 : 1]++;
@@ -299,19 +296,17 @@ public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.Balloo
         }
         Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(v.x, v.y, 0));
 
-        GameObject spere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        spere.transform.position = rayOrigin;
+        //GameObject spere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //spere.transform.position = rayOrigin;
         Ray ray = new Ray(rayOrigin, Vector3.forward);
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(ray); // Camera.main.ScreenPointToRay(v));
 
         if (rayHit.transform!=null)
         {
-            Debug.Log("##### hit something");
             BD_Balloon balloon = rayHit.transform.GetComponent<BD_Balloon>();
             if( balloon!=null )
             {
-                Debug.Log("##### hit balloon");
-                balloon.OnShoot();
+                balloon.OnShoot( playerId );
             }
         }
     }

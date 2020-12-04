@@ -47,6 +47,16 @@ public class MiniGame : MonoBehaviour
         {
             players[i].m_fireDlg -= MiniGameFireInput;
         }
+
+        CountdownHud countdownHud = HudManager.instance.GetHud<CountdownHud>(HudManager.GameHudType.countdown);
+        if (countdownHud != null && countdownHud.gameObject.activeSelf)
+        {
+            countdownHud.gameObject.SetActive(false);
+        }
+
+        MiniGameBasicHud hud = HudManager.instance.GetHud<MiniGameBasicHud>(HudManager.GameHudType.miniGame);
+        hud.Exit();
+        GameObject.Destroy(hud.gameObject);
     }
 
     protected virtual void MiniGameFireInput(int playerId, Vector2 v, RRPlayerInput.ButtonPhase buttonPhase)
@@ -60,6 +70,11 @@ public class MiniGame : MonoBehaviour
 
     public void StartCountdown()
     {
+        HudManager.instance.ShowHud(HudManager.GameHudType.countdown);
+        CountdownHud hud = HudManager.instance.GetHud<CountdownHud>(HudManager.GameHudType.countdown);
+        hud.PlayIntro();
+        hud.transform.SetAsLastSibling();
+        hud.onEndIntroAnimation = OnEndCountdownIntro;
     }
 
     private void OnEndCountdownIntro()
@@ -71,6 +86,8 @@ public class MiniGame : MonoBehaviour
     {
         InitWarmUp();
         m_miniGameState = MiniGameState.countdown;
+        CountdownHud hud = HudManager.instance.GetHud<CountdownHud>(HudManager.GameHudType.countdown);
+        hud.StartCountdown(StartGame);
     }
 
     protected virtual void StartGame()
@@ -86,6 +103,9 @@ public class MiniGame : MonoBehaviour
     public void StartEndAnim()
     {
         StopAmbiant();
+
+        CountdownHud hud = HudManager.instance.GetHud<CountdownHud>(HudManager.GameHudType.countdown);
+        hud.StartFinalAnimation(EndGame);
     }
 
     private void StopAmbiant()
@@ -94,6 +114,7 @@ public class MiniGame : MonoBehaviour
 
     private void EndGame()
     {
+        BattleContext.instance.CheckEndPracticeGame();
     }
 
 
@@ -112,16 +133,16 @@ public class MiniGame : MonoBehaviour
                     if (UpdateInit())
                     {
                         m_bInitDone = true;
-                        StartGame();
-  /*                      GenericTransitionHud hud = HudManager.instance.GetHud<GenericTransitionHud>(HudManager.GameHudType.genericTransition);
-                        if (hud == null)
-                        {
-                            OnEndTransitionOut();
-                        }
-                        else
-                        {
-                            hud.StartTransitionOut(OnEndTransitionOut);
-                        }*/
+                        OnEndTransitionOut();
+                        /*                      GenericTransitionHud hud = HudManager.instance.GetHud<GenericTransitionHud>(HudManager.GameHudType.genericTransition);
+                                              if (hud == null)
+                                              {
+                                                  OnEndTransitionOut();
+                                              }
+                                              else
+                                              {
+                                                  hud.StartTransitionOut(OnEndTransitionOut);
+                                              }*/
                     }
                 }
                 break;

@@ -1,61 +1,6 @@
 ﻿TEXTID;fr-FR
-str_mainMenu_last;Reprendre
-str_mainMenu_load;Charger
-str_mainMenu_new;Nouvelle Partie
-str_mainMenu_welcome;Bienvenue %VALUE%
-str_mainMenu_Options;Options
-str_cancel;Annuler
-str_day_0;Lundi
-str_day_1;Mardi
-str_day_2;Mercredi
-str_day_3;Jeudi
-str_day_4;Vendredi
-str_day_5;Samedi
-str_day_6;Dimanche
-str_weekNumber;Semaine %VALUE%
-str_evt_obj_unlock;Nouvel objectif:
-str_newDay_endDay;FIN DE JOURNEE
-str_newDay_newDay;NOUVELLE JOURNEE
-str_newDay_endDay_ok;Passer au jour suivant
-str_money;$
-str_win_elapsedTime;%VALUEDAY% JOURS, %VALUEHOUR% HEURES ET %VALUEMIN% MINUTES
-str_win_objSucceed;%VALUE% OBJECTIFS REUSSIS
-str_bon_timeAdd;%VALUE% toutes les %PERIOD_VALUE% %PERIOD_UNIT%
-str_hours;heure(s)
-str_minutes;minutes
-str_dayTime_morning;Matin
-str_dayTime_afternoon;Après-Midi
-str_dayTime_evening;Soir
-str_dayTime_night;Nuit
-str_menu_ok;OK
-str_agenda;Agenda
-str_inventory;Inventaire
-str_messages;Messages
-str_call;Appeler
-str_message_from;de :
-str_item_use;Utiliser
-str_save_autosave;Auto-Save
-str_save_choice;Choisissez sur quelles données enregistrer
-str_save_empty;Vide
-str_save_erase;Ecraser ces données ?
-str_eraseAndSave;Ecraser et sauvegarder
-str_save;Sauvegarder
-str_save_confirm;Sauvegarder à cet emplacement ?
-str_backMainMenu;Menu Principal
-str_gainData_none;
-str_gainData_attribute;Modifications d'attributs
-str_gainData_diary;Nouveau rendez-vous
-str_gainData_objective;Nouvel objectif
-str_gainData_item;Nouvel objet
-str_cuicuiMnu_Title;CUICUI
-str_cuicuiExplore;Explorer
-str_cuicuiConnect;Connecté(e) en tant que
-str_retake_confirm;Charger cette sauvegarde ?
-str_gameStart;Jouer
-str_cuicuiSubscriptions;Abonnements
-str_exitsure;Es-tu sur de vouloir quitter ?
-str_exitYes;Oui mais je reviendrai
-str_exitNo;Non effectivemment
-str_soundAmb;Volume musique
-str_soundSFX;Volume Sfx
-str_credits;Credits
+str_flags_3;3
+str_flags_2;2
+str_flags_1;1
+str_flags_go;GO
+str_flags_finished;FIN

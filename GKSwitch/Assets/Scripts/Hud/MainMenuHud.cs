@@ -20,8 +20,10 @@ public class MainMenuHud : MonoBehaviour
         switch( inputActionType )
         {
             case RRInputManager.InputActionType.ButtonRight:
+            case RRInputManager.InputActionType.Fire:
                 {
                     Debug.Log("Right");
+                    BattleContext.instance.CreateGKPlayers();
                     GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
                 }
                 break;

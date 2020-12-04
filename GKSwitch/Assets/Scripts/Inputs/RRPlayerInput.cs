@@ -48,12 +48,14 @@ public class RRPlayerInput : MonoBehaviour
                     m_cursorAiming = gameObject.AddComponent<CursorAimingGamePad>();
                 }
                 break;
+#if UNITY_SWITCH
             case "SwitchPro":
                 {
                     m_cursorAiming = gameObject.AddComponent<CursorAimingJoycon>();
                     ((CursorAimingJoycon)m_cursorAiming).SetNpadId(nPadId);
                 }
                 break;
+#endif
         }
     }
 
@@ -72,7 +74,6 @@ public class RRPlayerInput : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("####### OnMove " );
         if (m_inputDlg!=null )
         {
             m_inputDlg(context);
@@ -104,7 +105,13 @@ public class RRPlayerInput : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        Debug.Log("OnFire " + context.action + " // " + context.phase + " // " + context.interaction );
+        if (m_fireDlg == null)
+        {
+            RRInputManager.instance.Manageinput(context);
+            return;
+        }
+
+        //Debug.Log("OnFire " + context.action + " // " + context.phase + " // " + context.interaction );
         ButtonPhase phase = ButtonPhase.off;
         switch( context.phase )
         {
@@ -159,9 +166,11 @@ public class RRPlayerInput : MonoBehaviour
         return false;
     }
 
+#if UNITY_SWITCH
     internal void CreateSwitchAiming()
     {
         m_cursorAiming = gameObject.AddComponent<CursorAimingJoycon>();
         ((CursorAimingJoycon)m_cursorAiming).SetNpadId(nPadId);
     }
+#endif
 }
