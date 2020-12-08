@@ -141,7 +141,12 @@ public static class EditorList
         {
             while( element.Next(true) )
             {
-                if( element.enumNames.Length == nEnumSize)
+                if( element.propertyType != SerializedPropertyType.Enum )
+                {
+                    continue;
+                }
+                int elementEnumSize = element.enumNames.Length;
+                if(elementEnumSize == nEnumSize)
                 {
                     bool bSame = true;
                     for( int i=0; i<element.enumNames.Length; i++ )

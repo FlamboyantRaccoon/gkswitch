@@ -3466,7 +3466,7 @@ AnimationClip:
   m_Events:
   - time: 0.25
     functionName: PlaySound
-    data: event:/Trumpet/Trumpet_outro
+    data: Trumpet\gk_game_end
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

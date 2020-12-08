@@ -3107,6 +3107,7 @@ GameObject:
   - component: {fileID: 5717566368865960185}
   - component: {fileID: 8537938109018118288}
   - component: {fileID: 7969583950804962626}
+  - component: {fileID: 5053044251088603931}
   m_Layer: 0
   m_Name: CountdownHud
   m_TagString: Untagged
@@ -3163,6 +3164,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47961e2c0afed7a469405bf24d5cdd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5053044251088603931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565887045129541710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf2978a4f8d2134fb7741f7ff9af20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5704673140134433762

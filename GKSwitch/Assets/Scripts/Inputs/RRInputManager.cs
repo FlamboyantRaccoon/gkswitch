@@ -10,8 +10,10 @@ using nn.hid;
 
 public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 {
-#if UNITY_SWITCH
-    private NpadId[] npadIds = { NpadId.No1, NpadId.No2 };
+    public enum MoveDirection { none, left, top, right, bottom }
+
+    #if UNITY_SWITCH
+    private NpadId[] npadIds = { NpadId.No1, NpadId.No2, NpadId.No3, NpadId.No4 };
     private NpadId npadId = NpadId.Invalid;
     private NpadStyle npadStyle = NpadStyle.Invalid;
     private NpadState npadState = new NpadState();
@@ -21,11 +23,11 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     private Dictionary<NpadId, RRPlayerInput> m_playerInputPadDico = new Dictionary<NpadId, RRPlayerInput>();
 #endif
 
-    public delegate bool ManageInputDelegate(InputActionType inputActionType);
+    public delegate bool ManageInputDelegate(InputActionType inputActionType, MoveDirection moveDirection = MoveDirection.none );
 
     public GameObject playerInputPrefab = null;
 
-    public enum InputActionType { MoveL, MoveT, MoveR, MoveD, ButtonRight, Fire }
+    public enum InputActionType { Move, ButtonRight, Fire }
     public enum InputType { Touch, Controller }
 
     public static InputType m_lastInputType = InputType.Touch;
@@ -59,6 +61,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     #region unityEvent
     public void Move(InputAction.CallbackContext context)
     {
+        MoveDirection moveDirection = MoveDirection.none;
         if (context.started)
         {
             Vector2 vector2 = context.ReadValue<Vector2>();
@@ -69,20 +72,20 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
             }
             if (vector2.x <= -0.5f)
             {
-                ManageInput(InputActionType.MoveL);
+                ManageInput(InputActionType.Move, MoveDirection.left );
             }
             else if (vector2.x >= 0.5f)
             {
-                ManageInput(InputActionType.MoveR);
+                ManageInput(InputActionType.Move, MoveDirection.right);
             }
 
             if (vector2.y <= -0.5f)
             {
-                ManageInput(InputActionType.MoveD);
+                ManageInput(InputActionType.Move, MoveDirection.bottom);
             }
             else if (vector2.y >= 0.5f)
             {
-                ManageInput(InputActionType.MoveT);
+                ManageInput(InputActionType.Move, MoveDirection.top);
             }
 
 
@@ -96,7 +99,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
         Npad.SetSupportedIdType(npadIds);
         NpadJoy.SetHoldType(NpadJoyHoldType.Horizontal);
 
-        Npad.SetSupportedStyleSet(NpadStyle.FullKey | NpadStyle.Handheld | NpadStyle.JoyDual |
+        Npad.SetSupportedStyleSet(
            NpadStyle.JoyLeft | NpadStyle.JoyRight);
         ShowControllerSupport();
 
@@ -196,8 +199,8 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 #endif
     public void Manageinput(InputAction.CallbackContext context)
     {
-        InputActionType inputActionType = lwParseTools.ParseEnumSafe<InputActionType>(context.action.name, InputActionType.MoveL);
-        Debug.Assert(inputActionType != InputActionType.MoveL, "Invalid Name for input action : " + context.action.name);
+        InputActionType inputActionType = lwParseTools.ParseEnumSafe<InputActionType>(context.action.name, InputActionType.Move);
+        Debug.Assert(inputActionType != InputActionType.Move, "Invalid Name for input action : " + context.action.name);
         Debug.Log("Manage input : " + inputActionType);
         if (context.started)
         {
@@ -237,14 +240,14 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     }
 
 
-    private void ManageInput(InputActionType inputActionType)
+    private void ManageInput(InputActionType inputActionType, MoveDirection direction = MoveDirection.none )
     {
         Stack<ManageInputDelegate> tempory = new Stack<ManageInputDelegate>(new Stack<ManageInputDelegate>(m_inputStack));
         bool inputManaged = false;
         while (!inputManaged && tempory.Count > 0)
         {
             ManageInputDelegate current = tempory.Pop();
-            inputManaged = current(inputActionType);
+            inputManaged = current(inputActionType, direction);
         }
     }
 
@@ -252,7 +255,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     void ShowControllerSupport()
     {
         controllerSupportArg.SetDefault();
-        controllerSupportArg.playerCountMax = (byte)(npadIds.Length - 1);
+        controllerSupportArg.playerCountMax = (byte)(npadIds.Length);
         
         controllerSupportArg.enableIdentificationColor = false;
         controllerSupportArg.enableExplainText = false;

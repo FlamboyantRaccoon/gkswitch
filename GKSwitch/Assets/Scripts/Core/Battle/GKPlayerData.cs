@@ -12,6 +12,7 @@ public class GKPlayerData : MonoBehaviour
     public int m_currentScore;
     public int m_totalScore;
     public readyState m_nReadyState = readyState.none;
+    public string sToastyId { get; set; }
     public bool isBot { get; set; }
 
     public onScoreChangeChangeDlg m_onScoreChangeDlg;

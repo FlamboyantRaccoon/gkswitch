@@ -97,6 +97,7 @@ public class MiniGame : MonoBehaviour
 
         if (!string.IsNullOrEmpty(m_sMusicAmbName))
         {
+            RRSoundManager.instance.PlayPersistentSound(m_sMusicAmbName);
         }
     }
 
@@ -110,6 +111,10 @@ public class MiniGame : MonoBehaviour
 
     private void StopAmbiant()
     {
+        if (!string.IsNullOrEmpty(m_sMusicAmbName))
+        {
+            RRSoundManager.instance.StopPersistentSound(m_sMusicAmbName);
+        }
     }
 
     private void EndGame()

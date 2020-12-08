@@ -6,7 +6,8 @@ using TMPro;
 
 public class PlayerHud : MonoBehaviour
 {
-   
+    [SerializeField]
+    private Image m_avatar;
     [SerializeField]
     private TMP_Text m_playerName;
     [SerializeField]
@@ -50,13 +51,16 @@ public class PlayerHud : MonoBehaviour
         }
     }*/
 
-    public void SetInfos( string sName, string sTitleId, string sBlasonId, int nLevel )
+    public void SetInfos( int nPlayerId )
     {
-        SetName(sName);
-        SetTitle(sTitleId);
-        SetLevel(nLevel);
-        SetBlason(sBlasonId);
         m_fBotIconeTime = Time.realtimeSinceStartup + 1f;
+
+        GameSettings gameSettings = GameContext.instance.m_settings;
+        ToastyCollection toasties = GameContext.instance.m_toastyCollection;
+        GKPlayerData playerData = BattleContext.instance.GetPlayer(nPlayerId);
+
+        m_avatar.sprite = toasties.GetToasty(playerData.sToastyId).avatar;
+        m_banner.sprite = gameSettings.playerSettings[nPlayerId].banner;
 
         /*if (m_EmoticoneChoiceContainer != null )
         {
@@ -100,42 +104,7 @@ public class PlayerHud : MonoBehaviour
         }
     }
 
-    public void SetName( string sName )
-    {
-        Debug.Assert(m_playerName != null);
-        m_playerName.text = sName;
-    }
-
-    public void SetTitle(string sTitleId)
-    {
-        /*if( m_playerTitle!=null )
-        {
-            m_playerTitle.text = Customisation.GetTitle(sTitleId);
-        }*/
-    }
-
-    public void SetLevel( int nLevel)
-    {
-        if( m_playerLevel!=null )
-        {
-            m_playerLevel.text = nLevel.ToString();
-        }
-    }
-
-
-    public void SetBlason(string sBlasonId)
-    {
-        if( m_playerBlason!=null )
-        {
-            /*Customisation.CustoBlason blasonData;
-            if (Customisation.BLASONS_DICTIONARY.TryGetValue(sBlasonId, out blasonData))
-            {
-                blasonData.CheckIfSparkles(ref m_blasonfxSparkles, m_playerBlason.transform, HudManager.SparklesSize.medium );
-            }
-            m_playerBlason.sprite = Customisation.GetBlason(sBlasonId);*/
-        }
-    }
-
+    
     public void SetScore(int nScore, bool bAdd )
     {
         Debug.Assert(m_playerScore != null);

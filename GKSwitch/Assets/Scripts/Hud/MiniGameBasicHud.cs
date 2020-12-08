@@ -36,7 +36,7 @@ public class MiniGameBasicHud : MonoBehaviour
         {
             GKPlayerData player = bCtx.GetPlayer(nPlayer);
             m_playerArray[nPlayer] = GameObject.Instantiate(m_playerPrefab, m_playerPos[nPlayer]);
-            m_playerArray[nPlayer].SetInfos("P" + (nPlayer+1).ToString(), "", "", 0);
+            m_playerArray[nPlayer].SetInfos(nPlayer);
 
             bCtx.GetPlayer(nPlayer).m_onScoreChangeDlg += m_playerArray[nPlayer].SetScore;
             player.m_onChangeLeaderDlg = OnChangeLeader;

@@ -11,6 +11,7 @@ public class GameLogoState : GameState
     // ------------------------------------------------------------------
     public override void Enter()
     {
+        HudManager.instance.ShowHud(HudManager.GameHudType.gameBkg);
         HudManager.instance.ShowHud(HudManager.GameHudType.logoScreen);
         m_fEnterTimer = Time.realtimeSinceStartup;
     }

@@ -11407,42 +11407,42 @@ AnimationClip:
   m_Events:
   - time: 0.16666667
     functionName: PlaySound
-    data: event:/Trumpet/Trumpet_1st
+    data: Trumpet\gk_game_start_trumpet_1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.9166667
     functionName: PlaySound
-    data: event:/Trumpet/Trumpet_2nd
+    data: Trumpet\gk_game_start_trumpet_2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.5833334
     functionName: PlaySound
-    data: event:/Trumpet/Trumpet_3rd
+    data: Trumpet\gk_game_start_trumpet_3
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.25
     functionName: PlaySound
-    data: event:/Trumpet/Trumpet_4th
+    data: Trumpet\gk_game_start_trumpet_4
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.75
     functionName: StopPersistentSound
-    data: event:/Trumpet/Drumb_rumble
+    data: gk_game_start_drumb_rumble
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.8333333
     functionName: PlaySound
-    data: event:/Trumpet/Drumb_tap
+    data: gk_game_start_drumb_tap
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

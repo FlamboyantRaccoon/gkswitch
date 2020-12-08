@@ -11,12 +11,13 @@ public class RRPlayerInput : MonoBehaviour
     [SerializeField]
     private PlayerInput m_playerInput;
 
-    public delegate void InputDelegate(InputAction.CallbackContext context);
+    public delegate void InputDelegate(int playerId, InputAction.CallbackContext context);
     public delegate void UpdateCursorDlg(int playerId, Vector2 v);
     public delegate void UpdateFireDlg(int playerId, Vector2 v, ButtonPhase phase);
+    public delegate bool ManageInputDelegate(int playerId, RRInputManager.InputActionType inputActionType, RRInputManager.MoveDirection moveDirection = RRInputManager.MoveDirection.none);
 
     public InputDelegate m_inputDlg;
-    public RRInputManager.ManageInputDelegate m_inputActionDlg;
+    public ManageInputDelegate m_inputActionDlg;
     public UpdateCursorDlg m_updateCursorDlg;
     public UpdateFireDlg m_fireDlg;
 
@@ -76,7 +77,36 @@ public class RRPlayerInput : MonoBehaviour
     {
         if (m_inputDlg!=null )
         {
-            m_inputDlg(context);
+            m_inputDlg( Id, context);
+        }
+        else if(m_inputActionDlg != null )
+        {
+            if (context.started)
+            {
+                Vector2 vector2 = context.ReadValue<Vector2>();
+                if (vector2 == null)
+                {
+                    Debug.LogError("My Vector is null");
+                    return;
+                }
+                if (vector2.x <= -0.5f)
+                {
+                    m_inputActionDlg(Id, RRInputManager.InputActionType.Move, RRInputManager.MoveDirection.left);
+                }
+                else if (vector2.x >= 0.5f)
+                {
+                    m_inputActionDlg(Id, RRInputManager.InputActionType.Move, RRInputManager.MoveDirection.right);
+                }
+
+                if (vector2.y <= -0.5f)
+                {
+                    m_inputActionDlg(Id, RRInputManager.InputActionType.Move, RRInputManager.MoveDirection.bottom);
+                }
+                else if (vector2.y >= 0.5f)
+                {
+                    m_inputActionDlg(Id, RRInputManager.InputActionType.Move, RRInputManager.MoveDirection.top);
+                }
+            }
         }
         else
         {
@@ -149,7 +179,16 @@ public class RRPlayerInput : MonoBehaviour
         Debug.Log("OnButton : " + context.control.name + " /// " + context.control.displayName);
         if (m_inputDlg != null)
         {
-            m_inputDlg(context);
+            m_inputDlg(Id, context);
+        }
+        else if( m_inputActionDlg!=null )
+        {
+            RRInputManager.InputActionType inputActionType = lwParseTools.ParseEnumSafe<RRInputManager.InputActionType>(context.action.name, RRInputManager.InputActionType.Move);
+            Debug.Assert(inputActionType != RRInputManager.InputActionType.Move, "Invalid Name for input action : " + context.action.name);
+            if (context.started)
+            {
+                m_inputActionDlg.Invoke( Id, inputActionType);
+            }
         }
         else
         {
@@ -161,7 +200,7 @@ public class RRPlayerInput : MonoBehaviour
     {
         if( m_inputActionDlg!=null )
         {
-            return m_inputActionDlg(inputActionType);
+            return m_inputActionDlg(Id, inputActionType);
         }
         return false;
     }

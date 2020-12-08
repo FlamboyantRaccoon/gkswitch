@@ -10,6 +10,7 @@ public class MiniGameState : GameState
     // ------------------------------------------------------------------
     public override void Enter()
     {
+        HudManager.instance.HideHud(HudManager.GameHudType.gameBkg);
         m_miniGame = MiniGameManager.instance.InstantiateMiniGame(BattleContext.instance.GetMiniGame());
 
         BattleContext battle = BattleContext.instance;
@@ -39,5 +40,6 @@ public class MiniGameState : GameState
 
         }
         GameObject.Destroy(m_miniGame.gameObject);
+        HudManager.instance.ShowHud(HudManager.GameHudType.gameBkg);
     }
 }

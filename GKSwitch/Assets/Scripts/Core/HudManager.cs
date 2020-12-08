@@ -9,7 +9,7 @@ using System;
 
 public class HudManager : lwSingletonMonoBehaviour<HudManager>
 {
-    public enum GameHudType { logoScreen, splashScreen, mainMenu, miniGame, countdown }
+    public enum GameHudType { gameBkg, logoScreen, splashScreen, mainMenu, miniGame, countdown }
     public enum HudRootType { hud, popup, foreground }
     public enum PopupType { }
     public enum ForeHudType { aimingHud }

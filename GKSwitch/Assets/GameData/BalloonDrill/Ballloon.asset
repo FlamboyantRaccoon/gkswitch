@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9105f8481c72f154db6333e06f6bf09c, type: 3}
+  m_Name: Ballloon
+  m_EditorClassIdentifier: 
+  m_botDatas:
+  - botDifficulty: 0
+    m_sComment: 
+    miniGamelevel: {x: 0, y: 0}
+    m_nGoodActionPointWin: 100
+    clickBySecond:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    goodClickPercent:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+  m_datas:
+  - gameDifficulty: 0
+    m_playerLevelAccepted: {x: 0, y: 0}
+    m_sComment: 
+    gameTime: 10
+    sequencesArray:
+    - startTime: 0
+      colorCount: 6
+      balloonBySecond: 2
+      goodColorPercent: 20
+      speed: {x: 50, y: 150}
+      disruptiveElements: 
+      disruptiveElementSpeed: {x: 0, y: 0}

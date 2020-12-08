@@ -9,12 +9,6 @@ public class PlayerData : lwSingleton<PlayerData>
 {
     private const int SAVE_VERSION = 1;
 
-    public enum SoundType
-    {
-        Amb = 0,
-        Sfx
-    }
-
     private lwGameSave m_gameSave;
     private bool m_bLoaded = false;
 
@@ -26,11 +20,18 @@ public class PlayerData : lwSingleton<PlayerData>
 
     public PlayerData()
     {
+        RRSoundManager.instance.getSoundTypeVolumeDlg = GetVolume;
+
 #if !UNITY_SWITCH
         string name = GameConstants.GAME_NAME;
         m_gameSave = new lwGameSave(GameConstants.COMPANY_NAME, name, !lwGameSave.HasLocalStorage(), false, false);
 #endif
         Reset();
+    }
+
+    public float GetVolume( RRSoundManager.SoundType soundType )
+    {
+        return m_soundVolumes[(int)soundType];
     }
 
     public void Reset()
@@ -52,8 +53,8 @@ public class PlayerData : lwSingleton<PlayerData>
             return;
         }
 
-        m_soundVolumes[(int)SoundType.Amb] = (m_gameSave.GetInt("AMB_VOL", (int)(m_soundVolumes[(int)SoundType.Amb]*100))/100f);
-        m_soundVolumes[(int)SoundType.Sfx] = (m_gameSave.GetInt("SFX_VOL", (int)(m_soundVolumes[(int)SoundType.Sfx]*100))/ 100f);
+        m_soundVolumes[(int)RRSoundManager.SoundType.Amb] = (m_gameSave.GetInt("AMB_VOL", (int)(m_soundVolumes[(int)RRSoundManager.SoundType.Amb]*100))/100f);
+        m_soundVolumes[(int)RRSoundManager.SoundType.Sfx] = (m_gameSave.GetInt("SFX_VOL", (int)(m_soundVolumes[(int)RRSoundManager.SoundType.Sfx]*100))/ 100f);
        
 #endif
         m_bLoaded = true;
@@ -98,14 +99,14 @@ public class PlayerData : lwSingleton<PlayerData>
 
         switch ( soundType )
         {
-            case (int)SoundType.Amb:
+            case (int)RRSoundManager.SoundType.Amb:
                 {
                     SoundManager.instance.UpdateAmbVolume(fold, fNewValue);
                 }
                 break;
-            case (int)SoundType.Sfx:
+            case (int)RRSoundManager.SoundType.Sfx:
                 {
-                    SoundManager.instance.PlaySound(SoundManager.SoundFx.navValide);
+
                 }
                 break;
         }

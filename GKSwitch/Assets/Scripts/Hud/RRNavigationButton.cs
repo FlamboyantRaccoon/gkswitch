@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class RRNavigationButton : MonoBehaviour
 {
+    [System.Serializable] private class NavigationWayButton : lwEnumArray<RRInputManager.MoveDirection, RRNavigationButton> { }; // dummy definition to use Unity serialization
+
     [Header("Navigation")]
-    public RRNavigationButton onLeft = null;
-    public RRNavigationButton onTop = null;
-    public RRNavigationButton onRight = null;
-    public RRNavigationButton onDown = null;
+    [SerializeField]
+    private NavigationWayButton m_navigationsWays;
 
     public Button m_actionButton = null;
 
@@ -82,4 +82,13 @@ public class RRNavigationButton : MonoBehaviour
         ExecuteEvents.Execute(m_actionButton.gameObject, pointer, ExecuteEvents.submitHandler);
     }
 
+    public RRNavigationButton SelectNext( RRInputManager.MoveDirection direction )
+    {
+        RRNavigationButton button = m_navigationsWays[direction];
+        while( button !=null && !button.IsSelectable())
+        {
+            button = button.m_navigationsWays[direction];
+        }
+        return button;
+    }
 }

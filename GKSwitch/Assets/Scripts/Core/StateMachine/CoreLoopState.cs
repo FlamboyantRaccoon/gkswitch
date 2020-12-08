@@ -15,13 +15,12 @@ public class CoreLoopState : GameState
         // m_hud.periodTimeline.setPlayModeDlg = ChangePlayMode;
         m_bIsInit = false;
         GameSingleton.instance.StartCoroutine(InitAsync());
-
-        SoundManager.instance.StartAmbiance(SoundManager.SoundAmb.light);
     }
 
     private IEnumerator InitAsync()
     {
         HudManager hudManager = HudManager.instance;
+        hudManager.HideHud(HudManager.GameHudType.gameBkg);
 //        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(missionData.sSceneName, LoadSceneMode.Additive);
 //        while( !asyncOperation.isDone )
         {
@@ -39,8 +38,10 @@ public class CoreLoopState : GameState
     public override void Exit()
     {
         // autosave 
+        HudManager.instance.ShowHud(HudManager.GameHudType.gameBkg);
+
         //HudManager.instance.HideHud(HudManager.GameHudType.coreHud);
-//        SceneManager.UnloadSceneAsync(missionData.sSceneName);
+        //        SceneManager.UnloadSceneAsync(missionData.sSceneName);
     }
 
     // ------------------------------------------------------------------

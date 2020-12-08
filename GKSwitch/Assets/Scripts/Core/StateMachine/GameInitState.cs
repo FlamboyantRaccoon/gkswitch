@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class GameInitState : GameState
     private bool m_bLanguageLoaded = false;
     private float m_fEnterTimer;
 
+    private bool bPress { get; set; }
     // ------------------------------------------------------------------
     // Created PC 16/03/12
     // ------------------------------------------------------------------
@@ -15,9 +17,10 @@ public class GameInitState : GameState
         HudManager.instance.ShowHud(HudManager.GameHudType.splashScreen);
         SplashScreenHud splash = HudManager.instance.GetHud<SplashScreenHud>(HudManager.GameHudType.splashScreen);
         splash.Reset();
+        bPress = false;
         m_fEnterTimer = Time.realtimeSinceStartup;
         GameSingleton.instance.StartCoroutine(InitRoutine());
-
+        RRInputManager.instance.PushInput(GameInitStateInput);
 //        SoundManager.instance.StartAmbiance(SoundManager.SoundAmb.menu);
     }
 
@@ -26,6 +29,7 @@ public class GameInitState : GameState
     // ------------------------------------------------------------------
     public override void Exit()
     {
+        RRInputManager.RemoveInputSafe(GameInitStateInput);
         HudManager.instance.GetHud<SplashScreenHud>( HudManager.GameHudType.splashScreen).FadeOut();
     }
 
@@ -34,9 +38,13 @@ public class GameInitState : GameState
     // ------------------------------------------------------------------
     public override void Update()
     {
-        if( m_fEnterTimer!=-1f && Time.realtimeSinceStartup - m_fEnterTimer > 1.2f && m_bLanguageLoaded)
+        if( m_fEnterTimer!=-1f && m_bLanguageLoaded)
         {
             m_fEnterTimer = -1f;
+        }
+
+        if( m_fEnterTimer==-1 && bPress)
+        {
             GameSingleton.instance.gameStateMachine.ChangeState(new MainMenuState());
         }
     }
@@ -68,7 +76,7 @@ public class GameInitState : GameState
     private IEnumerator InitRoutine()
     {
         m_bLanguageLoaded = false;
-
+        GameContext.instance.Init();
         lwLanguageManager languageManager = lwLanguageManager.instance;
         AddTextFilesIntoLanguageManager();
         lwLanguageManager.instance.SetDefaultLanguage();
@@ -79,6 +87,20 @@ public class GameInitState : GameState
             yield return null;
         }
         m_bLanguageLoaded = true;
+    }
+
+    private bool GameInitStateInput(RRInputManager.InputActionType inputActionType, RRInputManager.MoveDirection moveDirection )
+    {
+        switch( inputActionType )
+        {
+            case RRInputManager.InputActionType.Fire:
+            case RRInputManager.InputActionType.ButtonRight:
+                {
+                    bPress = true;
+                }
+                break;
+        }
+        return true;
     }
 
 }
