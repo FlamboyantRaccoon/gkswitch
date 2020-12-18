@@ -11,14 +11,16 @@ public class MainMenuRules : MainMenuStateObject
     RectTransform m_playerReminderRoot;
     [SerializeField]
     PlayerSelectionBoard m_playerBoardPrefab;
+    [SerializeField]
+    MiniGameRoulette m_miniGameRoulette;
 
 
-    private int m_gameCount = 5;
+    private int m_gameCount = 1;
 
     public void OnEnable()
     {
         RRInputManager.instance.PushInput(MainMenuModeRulesInput);
-        m_gameCount = 5;
+        m_gameCount = 1;
         UpdateGameCount();
 
         lwTools.DestroyAllChildren(m_playerReminderRoot.gameObject);
@@ -33,6 +35,8 @@ public class MainMenuRules : MainMenuStateObject
             board.Setup(gameSettings.playerSettings[i].color);
             board.SetAvatar(toasties.GetToasty(playerData.sToastyId));
         }
+
+        m_miniGameRoulette.Init();
     }
 
     public void OnDisable()
@@ -43,6 +47,7 @@ public class MainMenuRules : MainMenuStateObject
     public void OnPlay()
     {
         BattleContext.instance.SetBattleInfo(m_gameCount);
+        BattleContext.instance.selectedMiniGame = m_miniGameRoulette.GetSelectedMiniGame();
         GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
     }
 
@@ -67,17 +72,20 @@ public class MainMenuRules : MainMenuStateObject
                     {
                         case RRInputManager.MoveDirection.left:
                             {
-                                if( m_gameCount>0 )
+                                /*if( m_gameCount>0 )
                                 {
                                     m_gameCount--;
                                     UpdateGameCount();
-                                }
+                                }*/
+                                m_miniGameRoulette.IncrementSelection(-1);
                             }
                             break;
                         case RRInputManager.MoveDirection.right:
                             {
+                                m_miniGameRoulette.IncrementSelection(1);
+                                /*
                                 m_gameCount++;
-                                UpdateGameCount();
+                                UpdateGameCount();*/
                             }
                             break;
                     }

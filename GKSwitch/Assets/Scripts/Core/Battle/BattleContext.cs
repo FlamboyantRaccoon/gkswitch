@@ -20,7 +20,7 @@ public class BattleContext : lwSingleton<BattleContext>
 
     private lwRndArray m_selector;
     public MiniGameManager.MiniGames[] m_battleAvailableGames;
-    public MiniGameManager.MiniGames selectedMiniGame { get { return m_selectedMiniGame; } }
+    public MiniGameManager.MiniGames selectedMiniGame { get { return m_selectedMiniGame; } set { m_selectedMiniGame = value; } }
     private MiniGameManager.MiniGames m_selectedMiniGame;
 
     public MiniGameDifficulty botDifficulty
@@ -43,7 +43,10 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public BattleContext()
     {
-
+        m_battleAvailableGames = new MiniGameManager.MiniGames[] { MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
+                                                                    MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
+                                                                    MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
+                                                                    MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape};
     }
 
     public void CreateGKPlayers()
@@ -104,7 +107,7 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public MiniGameManager.MiniGames GetMiniGame()
     {
-        return MiniGameManager.MiniGames.DrawShape;
+        return selectedMiniGame;
     }
 
     public void Reset()
