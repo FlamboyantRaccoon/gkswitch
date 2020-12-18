@@ -75,7 +75,7 @@ public class BD_Balloon : MonoBehaviour
 
     public void OnShoot( int playerId)
     {
-        Debug.Log("pouett on meee " + m_nColorId );
+        //Debug.Log("pouett on meee " + m_nColorId );
         if(m_canDestroyBalloon())
         {
             m_collider.enabled = false;

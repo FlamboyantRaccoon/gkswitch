@@ -7,13 +7,12 @@ using TMPro;
 public class MiniGameBasicHud : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text m_timer;
-    [SerializeField]
-    private Transform[] m_playerPos = new Transform[2];
-    [SerializeField]
     private PlayerHud m_playerPrefab;
+    [SerializeField]
+    private MiniGamePlayerLayout[] m_playerLayout;
 
     private PlayerHud[] m_playerArray;
+    private TMP_Text m_timer;
 
     public void UpdateTime(int nTime)
     {
@@ -31,11 +30,14 @@ public class MiniGameBasicHud : MonoBehaviour
         Reset();
         BattleContext bCtx = BattleContext.instance;
         m_playerArray = new PlayerHud[bCtx.playerCount];
-        int nCount = Mathf.Min(m_playerArray.Length, m_playerPos.Length);
+        MiniGamePlayerLayout playerLayout = SelectGoodLayout(bCtx.playerCount);
+        m_timer = playerLayout.m_timer;
+
+        int nCount = Mathf.Min(m_playerArray.Length, playerLayout.playersRoot.Length);
         for (int nPlayer = 0; nPlayer < nCount; nPlayer++)
         {
             GKPlayerData player = bCtx.GetPlayer(nPlayer);
-            m_playerArray[nPlayer] = GameObject.Instantiate(m_playerPrefab, m_playerPos[nPlayer]);
+            m_playerArray[nPlayer] = GameObject.Instantiate(m_playerPrefab, playerLayout.playersRoot[nPlayer]);
             m_playerArray[nPlayer].SetInfos(nPlayer);
 
             bCtx.GetPlayer(nPlayer).m_onScoreChangeDlg += m_playerArray[nPlayer].SetScore;
@@ -81,4 +83,13 @@ public class MiniGameBasicHud : MonoBehaviour
         }
     }
 
+    private MiniGamePlayerLayout SelectGoodLayout( int playerCount )
+    {
+        int nLayoutId = Mathf.Min( m_playerLayout.Length-1, playerCount-1 );
+        for( int i=0; i<m_playerLayout.Length; i++ )
+        {
+            m_playerLayout[i].gameObject.SetActive(i == nLayoutId);
+        }
+        return m_playerLayout[nLayoutId];
+    }
 }

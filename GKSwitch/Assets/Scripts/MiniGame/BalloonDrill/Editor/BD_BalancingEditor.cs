@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CustomEditor(typeof(BD_Balancing))]
-public class EX_BalancingInspector : MG_BalancingInspector<BD_BalloonDrill.BalloonDrillBotData, BD_BalloonDrill.BalloonDrillData>
+public class BD_BalancingInspector : MG_BalancingInspector<BD_BalloonDrill.BalloonDrillBotData, BD_BalloonDrill.BalloonDrillData>
 {
 
 }

@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PlayerDataComparer : IComparer
+{
+    public int Compare(object x, object y)
+    {
+        GKPlayerData p1 = (GKPlayerData)x;
+        GKPlayerData p2 = (GKPlayerData)y;
+        return p2.m_totalScore - p1.m_totalScore;
+    }
+}
+
 public class GKPlayerData : MonoBehaviour
 {
     public delegate void onIntValueChangeDlg( int v);
@@ -9,6 +19,7 @@ public class GKPlayerData : MonoBehaviour
 
     public enum readyState { none = 0, initReady, rouletteReady, jokerReady, endJoker, jokerApplied, miniGameReady, miniGameEnded }
 
+    public int Id { get; set; }
     public int m_currentScore;
     public int m_totalScore;
     public readyState m_nReadyState = readyState.none;

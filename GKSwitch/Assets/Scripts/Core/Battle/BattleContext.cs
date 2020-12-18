@@ -11,6 +11,7 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public int playerCount { get { return m_playerList.Count; } }
     public int currentRound { get; private set; }
+    public int totalRound { get { return m_nRoundCount; } }
     public bool isBattleEnded { get { return currentRound >= m_nRoundCount; } }
     public bool isPracticeGame { get; set; }
     public bool isSpecialBot { get; set; }
@@ -47,6 +48,7 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public void CreateGKPlayers()
     {
+        Reset();
         List<RRPlayerInput> players = RRInputManager.instance.playerList;
         for (int i = 0; i < players.Count; i++)
         {
@@ -67,6 +69,7 @@ public class BattleContext : lwSingleton<BattleContext>
     public void RegisterPlayer(GKPlayerData player)
     {
         m_playerList.Add(player);
+        player.Id = m_playerList.Count - 1;
     }
 
     public void UnRegisterPlayer(GKPlayerData player)
@@ -101,13 +104,18 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public MiniGameManager.MiniGames GetMiniGame()
     {
-        return MiniGameManager.MiniGames.BalloonDrill;
+        return MiniGameManager.MiniGames.DrawShape;
     }
 
     public void Reset()
     {
         m_playerList.Clear();
         currentRound = 0;
+    }
+
+    public void SetBattleInfo( int nRoundCount )
+    {
+        m_nRoundCount = nRoundCount;
     }
 
 /*    public void InitBotDifficulty(int[] nDifficulty = null)
@@ -176,15 +184,26 @@ public class BattleContext : lwSingleton<BattleContext>
     }
 
 
-    public bool CheckEndPracticeGame()
+    public void ManageEndMiniGame()
     {
+        AddMiniGameScoreToTotalScore();
+        currentRound = currentRound + 1;
+
+        if( isBattleEnded )
+        {
+            GameSingleton.instance.gameStateMachine.ChangeState(new GameStateResult());
+        }
+        else
+        {
+            GameSingleton.instance.gameStateMachine.ChangeState(new GameStateInterRound());
+        }
+
+        /*
         if (isPracticeGame)
         {
-            BattleContext.instance.Reset();
-            GameSingleton.instance.gameStateMachine.ChangeState(new MainMenuState());
-            return true;
-        }
-        return false;
+            GameSingleton.instance.gameStateMachine.ChangeState(new GameStateInterRound());
+            return;
+        }*/
     }
 
     public bool IsPlayerWinner()
@@ -238,6 +257,7 @@ public class BattleContext : lwSingleton<BattleContext>
         for (int i = 0; i < m_playerList.Count; i++)
         {
             m_playerList[i].m_totalScore += m_playerList[i].m_currentScore;
+            m_playerList[i].m_currentScore = 0;
         }
     }
 
@@ -317,25 +337,5 @@ public class BattleContext : lwSingleton<BattleContext>
         return nCurrencyWin;
     }
 
-    #region Web
 
-    public void InitBattleInfos()
-    {
-        m_battleAvailableGames = MiniGameManager.ComputeAvailableMiniGame();
-        m_selector = new lwRndArray((uint)m_battleAvailableGames.Length);
-        m_nRoundCount = ComputeRoundCount();
-    }
-
-
-    public void SetClientInfos(int nRoundCount)
-    {
-        m_nRoundCount = nRoundCount;
-    }
-
-    public int ComputeRoundCount()
-    {
-        return 1;
-    }
-
-    #endregion
 }

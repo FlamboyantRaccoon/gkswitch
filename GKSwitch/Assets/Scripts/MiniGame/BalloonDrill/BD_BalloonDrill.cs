@@ -201,13 +201,13 @@ public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.Balloo
         if (nColorId == (m_gameLogic.objectiveId))
         {
             BattleContext.instance.AddPoint(m_nGoodPointsWin, playerId);
-            HudManager.instance.SpawnWinScore(vBalloonPos, m_nGoodPointsWin);
+            HudManager.instance.SpawnWinScore(vBalloonPos, m_nGoodPointsWin, playerId);
             bGood = true;
         }
         else
         {
             BattleContext.instance.AddPoint(-m_nBadBalloonPointsLost, playerId);
-            HudManager.instance.SpawnLoseScore(vBalloonPos, -m_nBadBalloonPointsLost);
+            HudManager.instance.SpawnLoseScore(vBalloonPos, -m_nBadBalloonPointsLost, playerId);
             bGood = false;
         }
         m_ballonsDrillsStats[bGood ? 0 : 1]++;

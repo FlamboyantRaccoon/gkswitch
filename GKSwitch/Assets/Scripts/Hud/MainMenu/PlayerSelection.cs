@@ -105,6 +105,7 @@ public class PlayerSelection : MainMenuStateObject
             }
             players[i].m_inputActionDlg -= OnPlayerSelection;
         }
+        CleanBoard();
     }
 
 
@@ -186,8 +187,8 @@ public class PlayerSelection : MainMenuStateObject
     {
         foreach( KeyValuePair<int, PlayerSelectionInfo> pair in m_infoDico )
         {
-            GameObject.Destroy(pair.Value.board);
-            GameObject.Destroy(pair.Value.cursor);
+            GameObject.Destroy(pair.Value.board.gameObject);
+            GameObject.Destroy(pair.Value.cursor.gameObject);
         }
         m_infoDico.Clear();
     }

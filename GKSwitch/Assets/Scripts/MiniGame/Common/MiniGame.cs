@@ -18,6 +18,8 @@ public class MiniGame : MonoBehaviour
 
     protected float m_fInitTimerTest;
     private bool m_bAllPlayerReady = false;
+    public bool isPlaying { get { return m_miniGameState == MiniGameState.playing; } }
+
 
     public virtual void Init()
     {
@@ -34,6 +36,7 @@ public class MiniGame : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             players[i].m_fireDlg += MiniGameFireInput;
+            players[i].m_inputActionDlg += MiniGameActionInput;
         }
 
         // call for test
@@ -46,6 +49,7 @@ public class MiniGame : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             players[i].m_fireDlg -= MiniGameFireInput;
+            players[i].m_inputActionDlg -= MiniGameActionInput;
         }
 
         CountdownHud countdownHud = HudManager.instance.GetHud<CountdownHud>(HudManager.GameHudType.countdown);
@@ -61,6 +65,11 @@ public class MiniGame : MonoBehaviour
 
     protected virtual void MiniGameFireInput(int playerId, Vector2 v, RRPlayerInput.ButtonPhase buttonPhase)
     {
+    }
+
+    protected virtual bool MiniGameActionInput(int playerId, RRInputManager.InputActionType inputActionType, RRInputManager.MoveDirection moveDirection)
+    {
+        return true;
     }
 
     public virtual Dictionary<int, int> ComputeStatsDic()
@@ -119,7 +128,7 @@ public class MiniGame : MonoBehaviour
 
     private void EndGame()
     {
-        BattleContext.instance.CheckEndPracticeGame();
+        BattleContext.instance.ManageEndMiniGame();
     }
 
 

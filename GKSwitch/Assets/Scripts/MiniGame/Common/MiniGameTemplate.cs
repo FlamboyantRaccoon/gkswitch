@@ -20,8 +20,10 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
 
     protected TMgHud m_hud;
     protected TMgData m_gameData;
-    protected TMgBot m_currentBoot;
+    protected TMgBot m_currentBot;
     protected TMgLogic m_gameLogic;
+
+    public TMgData gameData { get { return m_gameData; } }
 
     public override Dictionary<int, int> ComputeStatsDic()
     {
@@ -55,8 +57,8 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
         m_nGoodPointsWin *= BattleContext.instance.battleMultiplier;*/
         m_nGoodPointsWin = 100;
 
-        m_currentBoot = m_gameBalancing.m_botDatas[MiniGameBotData.GetDataId(m_gameBalancing.m_botDatas, BattleContext.instance.botDifficulty)];
-        m_currentBoot.ComputeGoodActionPointWin(miniGame);
+        m_currentBot = m_gameBalancing.m_botDatas[MiniGameBotData.GetDataId(m_gameBalancing.m_botDatas, BattleContext.instance.botDifficulty)];
+        m_currentBot.ComputeGoodActionPointWin(miniGame);
     }
 
     protected void InstanciateHud()
@@ -90,7 +92,7 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
         }*/
     }
 
-    protected virtual void SetupNetworkConfigDelegate()
+    protected virtual void SetupLogicDelegate()
     {
     }
 }

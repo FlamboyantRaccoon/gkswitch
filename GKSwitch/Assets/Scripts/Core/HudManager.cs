@@ -9,11 +9,12 @@ using System;
 
 public class HudManager : lwSingletonMonoBehaviour<HudManager>
 {
-    public enum GameHudType { gameBkg, logoScreen, splashScreen, mainMenu, miniGame, countdown }
+    public enum GameHudType { gameBkg, logoScreen, splashScreen, mainMenu, miniGame, countdown, interRound, resultHud }
     public enum HudRootType { hud, popup, foreground }
     public enum PopupType { }
     public enum ForeHudType { aimingHud }
 
+    public static int sSPLITHUD_COUNT = 1;
 
     [System.Serializable] private class GameHudPrefab : lwEnumArray<GameHudType, GameObject> { }; // dummy definition to use Unity serialization
     [System.Serializable] private class PopupHudPrefab : lwEnumArray<PopupType, GameObject> { }; // dummy definition to use Unity serialization
@@ -246,31 +247,55 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         return tmp;
     }
 
-    public Vector2 ComputeHudPosFromWorldPosition(Vector3 vWorldPos)
+    public Vector2 ComputeHudPosFromWorldPosition(Vector3 vWorldPos, int playerId=0)
     {
         RectTransform CanvasRect = GetComponent<RectTransform>();
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(vWorldPos);
+
+        Rect rect = ComputePlayerRect(playerId);
+        ViewportPosition.x = ViewportPosition.x * rect.width + rect.x;
+        ViewportPosition.y = ViewportPosition.y * rect.height + rect.y;
+
         Vector2 WorldObject_ScreenPosition = new Vector2(
         ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
         ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
         return WorldObject_ScreenPosition;
     }
 
-    public void SpawnWinScore(Vector3 vWorldPos, int nScore, string sPrefix = "", string sSuffix = "")
+    public Rect ComputePlayerRect(int playerId)
+    {
+        Rect rect = new Rect(0f, 0f, 1f, 1f);
+        if (sSPLITHUD_COUNT == 1)
+        {
+            return rect;
+        }
+
+        rect.x = (playerId % 2) * 0.5f;
+        rect.width = 0.5f;
+
+        if (sSPLITHUD_COUNT > 2)
+        {
+            rect.height = 0.5f;
+            rect.y = (1 - ((int)(playerId / 2))) * 0.5f;
+        }
+        return rect;
+    }
+
+    public void SpawnWinScore(Vector3 vWorldPos, int nScore, int playerId=0, string sPrefix = "", string sSuffix = "")
     {
         HudScorePop pop = m_scorePopWin.GetInstance(transform);
         pop.Setup(nScore, (HudScorePop elt) => { m_scorePopWin.PoolObject(elt); }, sPrefix, sSuffix);
-        Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos);
+        Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos, playerId);
         pop.transform.localPosition = vCanvasPos;
         /*        RectTransform popRect = pop.gameObject.GetComponent<RectTransform>();
                 popRect.anchoredPosition = vCanvasPos;*/
     }
 
-    public void SpawnLoseScore(Vector3 vWorldPos, int nScore)
+    public void SpawnLoseScore(Vector3 vWorldPos, int nScore, int playerId = 0)
     {
         HudScorePop pop = m_scorePopLoose.GetInstance(transform);
         pop.Setup(nScore, (HudScorePop elt) => { m_scorePopLoose.PoolObject(elt); });
-        Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos);
+        Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos, playerId);
         pop.transform.position = vCanvasPos;
         RectTransform popRect = pop.gameObject.GetComponent<RectTransform>();
         popRect.anchoredPosition = vCanvasPos;

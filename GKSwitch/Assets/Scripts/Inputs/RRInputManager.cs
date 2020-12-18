@@ -97,7 +97,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 #if UNITY_SWITCH
         Npad.Initialize();
         Npad.SetSupportedIdType(npadIds);
-        NpadJoy.SetHoldType(NpadJoyHoldType.Horizontal);
+        NpadJoy.SetHoldType(NpadJoyHoldType.Vertical);
 
         Npad.SetSupportedStyleSet(
            NpadStyle.JoyLeft | NpadStyle.JoyRight);
@@ -107,6 +107,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
         bool bInit = false;
         while( !bInit )
         {
+#if UNITY_EDITOR
             PlayerInput keyboardPlayer = PlayerInput.Instantiate(playerInputPrefab, 0, "Keyboard", 0, Keyboard.current );
             Gamepad[] pads = Gamepad.all.ToArray();
             if( pads!=null && pads.Length > 0 )
@@ -117,6 +118,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
                 }
             }
             else
+#endif
             {
                 yield return null;
             }
@@ -128,7 +130,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 #if UNITY_SWITCH
     protected override void Update()
     {
-        System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+        /*System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
         stringBuilder.Length = 0;
 
         if (UpdatePadState())
@@ -141,7 +143,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
             {
                 Debug.Log("NpadButton.A Up");
             }
-        }
+        }*/
 
     }
 
@@ -201,7 +203,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     {
         InputActionType inputActionType = lwParseTools.ParseEnumSafe<InputActionType>(context.action.name, InputActionType.Move);
         Debug.Assert(inputActionType != InputActionType.Move, "Invalid Name for input action : " + context.action.name);
-        Debug.Log("Manage input : " + inputActionType);
+        //Debug.Log("Manage input : " + inputActionType);
         if (context.started)
         {
             ManageInput(inputActionType);
@@ -240,7 +242,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     }
 
 
-    private void ManageInput(InputActionType inputActionType, MoveDirection direction = MoveDirection.none )
+    public void ManageInput(InputActionType inputActionType, MoveDirection direction = MoveDirection.none )
     {
         Stack<ManageInputDelegate> tempory = new Stack<ManageInputDelegate>(new Stack<ManageInputDelegate>(m_inputStack));
         bool inputManaged = false;
@@ -266,13 +268,16 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 
         if (!result.IsSuccess()) { Debug.Log(result); }
 
+        List<InputDevice> devices = new List<InputDevice>(InputSystem.devices);
+
         for (int i = 0; i < npadIds.Length; i++)
         {
             NpadId npadId = npadIds[i];
             NpadStyle npadStyle = Npad.GetStyleSet(npadId);
+ 
             Debug.Log("npadStyle " + npadStyle);
             if (npadStyle == NpadStyle.None) { continue; }
-
+            
             PlayerInput player = PlayerInput.Instantiate(playerInputPrefab, 10+i, "SwitchPro");
             RRPlayerInput playerInput = player.GetComponent<RRPlayerInput>();
             playerInput.nPadId = npadId;

@@ -12067,6 +12067,7 @@ GameObject:
   - component: {fileID: 5314766285789431657}
   - component: {fileID: 5217525433932732423}
   - component: {fileID: 7366220889912280872}
+  - component: {fileID: 209957444695343607}
   m_Layer: 0
   m_Name: RootBalloon
   m_TagString: Untagged
@@ -12169,3 +12170,32 @@ MonoBehaviour:
   - {fileID: 5361473308081101011}
   - {fileID: 5361435484311219043}
   - {fileID: 5359680866211070085}
+--- !u!114 &209957444695343607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230633980719788021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d106bd25e1fa7a042878c375d504e7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundsList:
+  - Balloon/gk_game_pizzicato_01
+  - Balloon/gk_game_pizzicato_02
+  - Balloon/gk_game_pizzicato_03
+  - Balloon/gk_game_pizzicato_04
+  - Balloon/gk_game_pizzicato_05
+  - Balloon/gk_game_pizzicato_06
+  - Balloon/gk_game_pizzicato_07
+  - Balloon/gk_game_pizzicato_08
+  - Balloon/gk_game_pizzicato_09
+  - Balloon/gk_game_pizzicato_10
+  - Balloon/gk_game_pizzicato_11
+  - Balloon/gk_game_pizzicato_12
+  - Balloon/gk_game_pizzicato_13
+  - Balloon/gk_game_pizzicato_14
+  - Balloon/gk_game_pizzicato_15
+  - Balloon/gk_game_pizzicato_16

@@ -39,6 +39,24 @@ public class AimingHud : MonoBehaviour
         float fX = vPos.x * fHalfWidth;
         float fY = vPos.y * fHalfHeight;
 
+        if( HudManager.sSPLITHUD_COUNT > 1 )
+        {
+            float fStartX = (id%2) == 0 ? - fHalfWidth/2f : fHalfWidth/2f;
+            float fWidth = 0.5f;
+            float fStartY = 0;
+            float fHeight = 1f;
+
+            if (HudManager.sSPLITHUD_COUNT > 2)
+            {
+                fHeight = 0.5f;
+                fStartY = (id < 2) ? fHalfHeight / 2f : -fHalfHeight / 2f;
+            }
+
+            fX = fX * fWidth + fStartX;
+            fY = fY * fHeight + fStartY;
+        }
+
+
         PlayerAim playerAim = null;
         if( m_aimDico.TryGetValue( id, out playerAim) )
         {

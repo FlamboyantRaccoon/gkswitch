@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class CursorAimingJoycon : CursorAiming
 {
+    private const string RAYCAST_LAYER = "RaycastQuad_";
     Vector2 m_position = Vector2.zero;
     private float m_semiAmplitudeX = 30f;
     private float m_semiAmplitudeY = 20f;
@@ -29,8 +30,11 @@ public class CursorAimingJoycon : CursorAiming
     private int handleCount = 0;
     private Quaternion m_rawQuaternion;
     private nn.util.Float4 npadQuaternion = new nn.util.Float4();
+    private RRPlayerInput playerInput;
 
     private GameObject m_projectionQuad;
+
+    private bool m_bOnFire = false;
 
     public void SetNpadId( nn.hid.NpadId id )
     {
@@ -41,6 +45,11 @@ public class CursorAimingJoycon : CursorAiming
         debugCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         debugCube.transform.localScale = new Vector3(1f, 0.5f, 3f);
         debugpoint = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+    }
+
+    internal void SetPlayerInput(RRPlayerInput rRPlayerInput)
+    {
+        playerInput = rRPlayerInput;
     }
 
     public void Calibrate()
@@ -54,7 +63,7 @@ public class CursorAimingJoycon : CursorAiming
             m_projectionQuad = GameObject.CreatePrimitive(PrimitiveType.Quad);
             m_projectionQuad.transform.localScale = new Vector3(960f, 540f, 1f);
             m_projectionQuad.name = "projection_" + nPadId;
-            m_projectionQuad.layer = LayerMask.NameToLayer("RaycastQuad");
+            m_projectionQuad.layer = LayerMask.NameToLayer(RAYCAST_LAYER + nPadId.ToString());
         }
 
 
@@ -100,17 +109,12 @@ public class CursorAimingJoycon : CursorAiming
 
     void Update()
     {
+        ManageButtons();
+
         SixAxisSensor.GetState(ref state, handle[0]);
         state.GetQuaternion(ref npadQuaternion);
         m_rawQuaternion.Set(npadQuaternion.x, npadQuaternion.z, npadQuaternion.y, -npadQuaternion.w);
 
-        // search if recalibrate
-        Npad.GetState(ref nState, nPadId, nStyle);
-        if ( Time.time - calibrationTimer >= 1f &&  (((nState.buttons & NpadButton.ZR) != 0 && (nState.buttons & NpadButton.R ) != 0) || ((nState.buttons & NpadButton.ZL) != 0 && (nState.buttons & NpadButton.L ) != 0)))
-        {
-            Debug.Log("Recalibrate");
-            Calibrate();
-        }
         Quaternion correctedQuaternion = m_rawQuaternion * Quaternion.Inverse( m_referenceQuaternion );
 
         float fAngleY = yRotation(correctedQuaternion).eulerAngles.y;
@@ -137,7 +141,7 @@ public class CursorAimingJoycon : CursorAiming
         Ray ray = new Ray(Vector3.zero, fwd);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("RaycastQuad")))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask(RAYCAST_LAYER + nPadId.ToString())))
         {
             debugpoint.transform.position = hit.point;
             var localHit = m_projectionQuad.transform.InverseTransformPoint(hit.point);
@@ -178,5 +182,99 @@ public class CursorAimingJoycon : CursorAiming
         return m_position;
     }
 
+    private void ManageButtons()
+    {
+        // search if recalibrate
+        Npad.GetState(ref nState, nPadId, nStyle);
+
+        if (Time.time - calibrationTimer >= 1f && (((nState.buttons & NpadButton.ZR) != 0 && (nState.buttons & NpadButton.R) != 0) || ((nState.buttons & NpadButton.ZL) != 0 && (nState.buttons & NpadButton.L) != 0)))
+        {
+            Debug.Log("Recalibrate");
+            Calibrate();
+        }
+        else 
+        {
+            RRPlayerInput.ButtonPhase firePhase = ManageFirePhase(nState);
+            if (playerInput.m_fireDlg == null)
+            {
+                if( firePhase== RRPlayerInput.ButtonPhase.press )
+                {
+                    RRInputManager.instance.ManageInput(RRInputManager.InputActionType.Fire);
+                }
+            }
+            else
+            {
+                playerInput.UpdateFire(firePhase);
+            }
+        }
+
+        // direction
+        if( nState.GetButtonDown(NpadButton.StickLLeft) || nState.GetButtonDown(NpadButton.StickRLeft))
+        {
+            ManageMove(RRInputManager.MoveDirection.left);
+        }
+        if (nState.GetButtonDown(NpadButton.StickLRight) || nState.GetButtonDown(NpadButton.StickRRight))
+        {
+            ManageMove(RRInputManager.MoveDirection.right);
+        }
+        if (nState.GetButtonDown(NpadButton.StickLUp) || nState.GetButtonDown(NpadButton.StickRUp))
+        {
+            ManageMove(RRInputManager.MoveDirection.top);
+        }
+        if (nState.GetButtonDown(NpadButton.StickLDown) || nState.GetButtonDown(NpadButton.StickRDown))
+        {
+            ManageMove(RRInputManager.MoveDirection.bottom);
+        }
+
+        if (nState.GetButtonDown(NpadButton.A) || nState.GetButtonDown(NpadButton.Right))
+        {
+            ManageButton(RRInputManager.InputActionType.ButtonRight);
+        }
+
+    }
+
+    private void ManageMove(RRInputManager.MoveDirection moveDirection )
+    {
+        if( playerInput.m_inputActionDlg!=null )
+        {
+            playerInput.m_inputActionDlg(playerInput.Id, RRInputManager.InputActionType.Move, moveDirection);
+        }
+        else
+        {
+            RRInputManager.instance.ManageInput(RRInputManager.InputActionType.Move, moveDirection);
+        }
+    }
+
+    private void ManageButton(RRInputManager.InputActionType inputActionType )
+    {
+        if (playerInput.m_inputActionDlg != null)
+        {
+            playerInput.m_inputActionDlg(playerInput.Id, inputActionType);
+        }
+        else
+        {
+            RRInputManager.instance.ManageInput(inputActionType);
+        }
+    }
+
+    private RRPlayerInput.ButtonPhase ManageFirePhase( NpadState npadState )
+    {
+        if (npadState.GetButtonDown(NpadButton.ZR) || npadState.GetButtonDown(NpadButton.ZL))
+        {
+            m_bOnFire = true;
+            return RRPlayerInput.ButtonPhase.press;
+        }
+        if(npadState.GetButton(NpadButton.ZR) || npadState.GetButton(NpadButton.ZL))
+        {
+            m_bOnFire = true;
+            return RRPlayerInput.ButtonPhase.on;
+        }
+        if (m_bOnFire )
+        {
+            m_bOnFire = false;
+            return RRPlayerInput.ButtonPhase.release;
+        }
+        return RRPlayerInput.ButtonPhase.off;
+    }
 #endif
 }

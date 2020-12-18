@@ -42,6 +42,7 @@ public class MainMenuRules : MainMenuStateObject
 
     public void OnPlay()
     {
+        BattleContext.instance.SetBattleInfo(m_gameCount);
         GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
     }
 

@@ -24,6 +24,7 @@ public class RRPlayerInput : MonoBehaviour
     public int Id { get { return m_nId; } }
 
     private bool m_bOnFire = false;
+    private RRSwitchMapping switchMapping = null;
 
 #if UNITY_SWITCH
     public nn.hid.NpadId nPadId { get; set; }
@@ -160,11 +161,11 @@ public class RRPlayerInput : MonoBehaviour
                 break;
         }
 
-        m_bOnFire = phase == ButtonPhase.on;
+        m_bOnFire = phase == ButtonPhase.on ;
         UpdateFire(phase);
     }
 
-    private void UpdateFire( ButtonPhase phase )
+    public void UpdateFire( ButtonPhase phase )
     {
         Vector2 vScreenPos = Vector2.zero;
         if (m_cursorAiming != null)
@@ -176,7 +177,7 @@ public class RRPlayerInput : MonoBehaviour
 
     public void OnButton(InputAction.CallbackContext context)
     {
-        Debug.Log("OnButton : " + context.control.name + " /// " + context.control.displayName);
+        //Debug.Log("OnButton : " + context.control.name + " /// " + context.control.displayName);
         if (m_inputDlg != null)
         {
             m_inputDlg(Id, context);
@@ -210,6 +211,11 @@ public class RRPlayerInput : MonoBehaviour
     {
         m_cursorAiming = gameObject.AddComponent<CursorAimingJoycon>();
         ((CursorAimingJoycon)m_cursorAiming).SetNpadId(nPadId);
+        ((CursorAimingJoycon)m_cursorAiming).SetPlayerInput(this);
+/*
+        switchMapping = gameObject.AddComponent<RRSwitchMapping>();
+        switchMapping.SetNpadId(nPadId);
+        switchMapping.SetPlayerInput(this);*/
     }
 #endif
 }

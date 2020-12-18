@@ -33,7 +33,7 @@ MonoBehaviour:
   - gameDifficulty: 0
     m_playerLevelAccepted: {x: 0, y: 0}
     m_sComment: 
-    gameTime: 10
+    gameTime: 3000
     sequencesArray:
     - startTime: 0
       colorCount: 6
