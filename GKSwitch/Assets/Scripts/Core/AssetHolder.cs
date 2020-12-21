@@ -4,4 +4,6 @@ using UnityEngine;
 
 public class AssetHolder : lwSingletonMonoBehaviour<AssetHolder>
 {
+    [SerializeField]
+    public MG_PlayerCursor playerCursorPrefab;
 }

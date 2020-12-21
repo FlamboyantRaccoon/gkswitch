@@ -67,7 +67,7 @@ public class MiniGameRoulette : MonoBehaviour
 
     public void IncrementSelection( int increment)
     {
-        m_nCurrentCard = (m_nCurrentCard + increment) % miniGameCards.Length;
+        m_nCurrentCard = (m_nCurrentCard + miniGameCards.Length + increment) % miniGameCards.Length;
         SelectCard(m_nCurrentCard);
     }
 

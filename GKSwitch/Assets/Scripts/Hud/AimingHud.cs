@@ -24,6 +24,7 @@ public class AimingHud : MonoBehaviour
         for( int i=0; i<players.Count; i++ )
         {
             PlayerAim aim = GameObject.Instantiate<PlayerAim>(playerAimPrefab, transform);
+            aim.Setup(i);
             m_aimDico.Add(players[i].Id, aim);
             players[i].m_updateCursorDlg += UpdateCursor;
         }

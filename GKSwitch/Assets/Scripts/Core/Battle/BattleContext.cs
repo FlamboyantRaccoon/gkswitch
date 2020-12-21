@@ -44,7 +44,7 @@ public class BattleContext : lwSingleton<BattleContext>
     public BattleContext()
     {
         m_battleAvailableGames = new MiniGameManager.MiniGames[] { MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
-                                                                    MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
+                                                                    MiniGameManager.MiniGames.GreatClimbing, MiniGameManager.MiniGames.DrawShape,
                                                                     MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
                                                                     MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape};
     }
@@ -252,7 +252,7 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public void SetPoint(int nPoints, int nPlayerId = 0)
     {
-        m_playerList[nPlayerId].m_currentScore = nPoints;
+        m_playerList[nPlayerId].SetLocalCurrentScore( nPoints );
     }
 
     public void AddMiniGameScoreToTotalScore()

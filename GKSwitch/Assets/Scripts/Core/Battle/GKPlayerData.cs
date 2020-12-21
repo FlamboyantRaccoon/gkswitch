@@ -48,4 +48,11 @@ public class GKPlayerData : MonoBehaviour
             m_onChangeLeaderDlg?.Invoke(nNewLeader);
         }
     }
+
+    public void SetLocalCurrentScore(int nPoints)
+    {
+        int nLast = m_currentScore;
+        int delta = nPoints - nLast;
+        AddCurrentScore(delta);
+    }
 }

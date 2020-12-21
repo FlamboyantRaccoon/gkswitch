@@ -46,7 +46,7 @@ MonoBehaviour:
   - gameDifficulty: 0
     m_playerLevelAccepted: {x: 0, y: 0}
     m_sComment: 
-    gameTime: 3000
+    gameTime: 30
     pointsCount: {x: 3, y: 4}
     fShapeWidth: 100
     fModelFadeOutTime: 2
