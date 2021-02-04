@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 0cf3e91003c3f12448520b17e59ed475
+  m_SerializeEntries:
+  - m_GUID: f515adfb7ab7606488763be9bd7a89ec
+    m_Address: Assets/Art/Textures/2D/GUI/Core_TapisRoulant/IMG_plateBlue.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 2800000, guid: f515adfb7ab7606488763be9bd7a89ec, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: f515adfb7ab7606488763be9bd7a89ec, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cef8022fdcb0eab4e9de05108d2ac98e, type: 2}
+    - {fileID: 11400000, guid: 4a984f044e2fe104abd9eb5b90b7049c, type: 2}

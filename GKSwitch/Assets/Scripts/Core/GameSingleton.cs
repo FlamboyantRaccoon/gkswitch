@@ -24,12 +24,13 @@ public class GameSingleton : lwSingletonMonoBehaviour<GameSingleton>
     private lwTextureMemory m_memory = null;
 #endif
     // Use this for initialization
-    void Awake()
+    void Awake() 
     {
 
         PlayerData playerData = PlayerData.instance;
         playerData.Load();
 
+        //Application.targetFrameRate = 30;
 
 
         // CheatCodes Init

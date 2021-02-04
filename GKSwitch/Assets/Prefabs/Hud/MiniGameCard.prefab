@@ -221,7 +221,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ef954ebcd994595498d39e2b3ab5710b, type: 3}
     m_enumNames:
     - BalloonDrill
-    - ConveyorBelt
+    - Banquet
     - GreatClimbing
     - DrawShape
     - Picking

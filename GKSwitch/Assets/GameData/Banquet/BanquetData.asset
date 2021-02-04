@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202c8bdd190721b4d82cbd667e58ebee, type: 3}
+  m_Name: BanquetData
+  m_EditorClassIdentifier: 
+  m_botDatas:
+  - botDifficulty: 0
+    m_sComment: 
+    miniGamelevel: {x: 0, y: 0}
+    m_nGoodActionPointWin: 100
+    clickBySecond:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    goodClickPercent:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+  m_datas:
+  - gameDifficulty: 0
+    m_playerLevelAccepted: {x: 0, y: 0}
+    m_sComment: 
+    gameTime: 30
+    nElementsCount: 3
+    nColorsCount: 1
+    sequencesArray:
+    - startTime: 0
+      conveyorSpeed: 300
+      mealBySecond: 0.75
+      goodMealPercent: 85
+      maxBadMealInRow: 0
+      orderShown: 2
+      isNotEltPercent: 0
+      anyColorPercent: 100
+    - startTime: 10
+      conveyorSpeed: 350
+      mealBySecond: 0.8
+      goodMealPercent: 80
+      maxBadMealInRow: 0
+      orderShown: 3
+      isNotEltPercent: 0
+      anyColorPercent: 100
+    - startTime: 20
+      conveyorSpeed: 400
+      mealBySecond: 0.9
+      goodMealPercent: 70
+      maxBadMealInRow: 0
+      orderShown: 3
+      isNotEltPercent: 0
+      anyColorPercent: 100

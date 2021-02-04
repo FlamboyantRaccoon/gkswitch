@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8731257970645939938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018703418251331284}
+  - component: {fileID: 3752054029443127300}
+  m_Layer: 0
+  m_Name: Banquet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1018703418251331284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731257970645939938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3752054029443127300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731257970645939938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a764660c84605f04e9dd731551cecd29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sMusicAmbName: 
+  m_miniGameHudPrefab: {fileID: 2895601034908117830, guid: 34467a5131947954688e6e9fd7642f45, type: 3}
+  m_nDataTestId: -1
+  m_nBotTestId: -1
+  m_gameBalancing: {fileID: 11400000, guid: 9ede062f7025d3a4582c14e9bd085957, type: 2}
+  m_bkgReference:
+    m_AssetGUID: 22065e99b179cea4fa759142aa00c77c
+    m_SubObjectName: 
+  m_mealEltReferences:
+  - m_AssetGUID: b2c276e56c23b484b9ed20013102629e
+    m_SubObjectName: 
+  - m_AssetGUID: 10fb61df54c4cf04d9c33a88e8b949ad
+    m_SubObjectName: 
+  - m_AssetGUID: 0bdd742f28ec207429bc95d2718a8532
+    m_SubObjectName: 
+  - m_AssetGUID: b8e4f9901270155428ee98a6ff32333e
+    m_SubObjectName: 
+  - m_AssetGUID: b340afcdacf90b748a2abb64bb3b2db3
+    m_SubObjectName: 
+  - m_AssetGUID: 03f560e0f76e74f4db81caff2377d713
+    m_SubObjectName: 
+  m_mealReference:
+    m_AssetGUID: bf03121fd6a770843b54c4126cb5f0c7
+    m_SubObjectName: 
+  m_nBeltSize: 100

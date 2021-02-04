@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3e224b160584f4c88667367d88e168, type: 3}
+  m_Name: TTDatas
+  m_EditorClassIdentifier: 
+  m_botDatas:
+  - botDifficulty: 0
+    m_sComment: 
+    miniGamelevel: {x: 0, y: 0}
+    m_nGoodActionPointWin: 100
+    percentChanceToBeHitByEnemy:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minTimeBeforeEnemyHit: {x: 0, y: 0}
+    percentChanceToTakeFlashCandy:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    timeToTakeCandy: {x: 0, y: 0}
+  m_datas:
+  - gameDifficulty: 0
+    m_playerLevelAccepted: {x: 0, y: 0}
+    m_sComment: 
+    gameTime: 30
+    nGridColumnCount: 7
+    nGridRowCount: 7
+    nPumpkyCount: 1
+    fPumpkySpeed: {x: 320, y: 320}
+    nFrankyCount: 1
+    nCandyMax: 4
+    fFrankySpeed: {x: 120, y: 120}
+    sequencesArray:
+    - startTime: 0
+      itemsBySecond: 2.2
+      candyWeight:
+        m_internalArray:
+        - 1
+        - 1
+        - 0.1
+        m_enumNames:
+        - normal
+        - flash
+        - gold
+      ghostBySecond: 0.2
+      fGhostSpeed: {x: 120, y: 240}

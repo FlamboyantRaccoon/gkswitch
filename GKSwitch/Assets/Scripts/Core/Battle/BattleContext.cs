@@ -44,9 +44,9 @@ public class BattleContext : lwSingleton<BattleContext>
     public BattleContext()
     {
         m_battleAvailableGames = new MiniGameManager.MiniGames[] { MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
-                                                                    MiniGameManager.MiniGames.GreatClimbing, MiniGameManager.MiniGames.DrawShape,
-                                                                    MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape,
-                                                                    MiniGameManager.MiniGames.BalloonDrill, MiniGameManager.MiniGames.DrawShape};
+                                                                    MiniGameManager.MiniGames.GreatClimbing, MiniGameManager.MiniGames.Banquet,
+                                                                    MiniGameManager.MiniGames.Expressions, MiniGameManager.MiniGames.Picking,
+                                                                    MiniGameManager.MiniGames.SnowArena, MiniGameManager.MiniGames.TrickOrTreat};
     }
 
     public void CreateGKPlayers()

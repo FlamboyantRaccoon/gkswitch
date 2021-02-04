@@ -28,7 +28,7 @@ public class BD_Logic : MiniGameLogic
 
     public void Init(int nSpawnCount, byte nGameData, BD_BalloonDrill.BalloonDrillData gameData)
     {
-        m_fGameStartTime = 0f;
+        m_fGameStartTime = Time.time;
         objectiveId = -1;
         m_nFuturObjectiveId = (byte)(Random.Range(0, 6));
         m_nGameDataId = nGameData;

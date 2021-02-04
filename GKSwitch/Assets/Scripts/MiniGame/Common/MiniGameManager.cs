@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MiniGameManager : lwSingletonMonoBehaviour<MiniGameManager>
 {
-    public enum MiniGames { BalloonDrill = 0, ConveyorBelt = 1, GreatClimbing = 2, DrawShape = 3, Picking = 4, Expressions = 5, TrickOrTreat = 6, SnowArena = 7  }
+    public enum MiniGames { BalloonDrill = 0, Banquet = 1, GreatClimbing = 2, DrawShape = 3, Picking = 4, Expressions = 5, TrickOrTreat = 6, SnowArena = 7  }
 
-    public const int xDEFAULT_AVAILABLE_MG = (1 << (int)MiniGames.BalloonDrill) | (1 << (int)MiniGames.ConveyorBelt) | (1 << (int)MiniGames.GreatClimbing) | (1 << (int)MiniGames.DrawShape) |
+    public const int xDEFAULT_AVAILABLE_MG = (1 << (int)MiniGames.BalloonDrill) | (1 << (int)MiniGames.Banquet) | (1 << (int)MiniGames.GreatClimbing) | (1 << (int)MiniGames.DrawShape) |
                                                 (1 << (int)MiniGames.Picking) | (1 << (int)MiniGames.Expressions);
     public const int xTUTO_START_MG = 1 << (int)MiniGames.BalloonDrill;
 

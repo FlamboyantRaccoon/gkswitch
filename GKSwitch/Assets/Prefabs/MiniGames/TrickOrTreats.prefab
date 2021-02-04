@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8322369803262322720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5370740527889478527}
+  - component: {fileID: 407289320313659782}
+  m_Layer: 0
+  m_Name: TrickOrTreats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5370740527889478527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322369803262322720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407289320313659782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322369803262322720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1fa5e519a2dc24b9c9735a0bd63f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sMusicAmbName: music_trick
+  m_miniGameHudPrefab: {fileID: 1059351490882735849, guid: 74cf896cc81436145a5a086e86fad757, type: 3}
+  m_nDataTestId: -1
+  m_nBotTestId: -1
+  m_gameBalancing: {fileID: 11400000, guid: e7d4058069bbe1d45b87b27b812acf2d, type: 2}
+  m_nBadPointsLost: 300
+  m_candyDatas:
+    m_internalArray:
+    - fPointCoeff: 1
+      fShowTime: -1
+      sCandyFx: gk_game_expression_good_04
+    - fPointCoeff: 1
+      fShowTime: 3
+      sCandyFx: gk_game_expression_good_05
+    - fPointCoeff: 2.5
+      fShowTime: 2
+      sCandyFx: gk_game_expression_good_06
+    m_enumNames:
+    - normal
+    - flash
+    - gold
+  m_fInvincibleTime: 0.75
+  m_bkgReference:
+    m_AssetGUID: b2faba41dcde3f94bbe190f0903c3f55
+    m_SubObjectName: 
+  m_candyReference:
+    m_internalArray:
+    - m_AssetGUID: 298eb2895f95e614c8688d43bb0158ef
+      m_SubObjectName: 
+    - m_AssetGUID: a1e91616d2e7c8a4b90a9aa899ce5ad2
+      m_SubObjectName: 
+    - m_AssetGUID: 7e4b03e7d26bb944888ea1db1f8afcb0
+      m_SubObjectName: 
+    m_enumNames:
+    - normal
+    - flash
+    - gold
+  m_cursorReference:
+    m_AssetGUID: a3fe254da955d5040bf1e44675580f0f
+    m_SubObjectName: 
+  m_enemyReference:
+    m_internalArray:
+    - m_AssetGUID: e23c558bfec8f7e47933f3537fcbd515
+      m_SubObjectName: 
+    - m_AssetGUID: cf779600c9f133d4b8638341b5d43752
+      m_SubObjectName: 
+    - m_AssetGUID: 581a09e6497f8924f873fc1ac46f1735
+      m_SubObjectName: 
+    m_enumNames:
+    - ghosty
+    - pumpky
+    - frankensty
+  m_playerScale: 0.3
+  m_enemyScale: 0.3
+  m_candyScale: 0.4
