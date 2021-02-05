@@ -272,6 +272,7 @@ public class DS_DrawShape : MiniGameTemplate<DS_Logic, DS_DrawShape.DrawShapeDat
             m_playerInfos[i].canvas.m_addScore = AddScore;
         }
         HudManager.sSPLITHUD_COUNT = playerCount;
+        HudManager.sSPLITHUD_TYPE = HudManager.SplitHudType.quarter;
     }
 
     /*public override void UpdatePlayerBoot(GK_NetworkPlayer player)

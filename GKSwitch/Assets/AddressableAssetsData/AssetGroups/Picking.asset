@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Picking
+  m_EditorClassIdentifier: 
+  m_GroupName: Picking
+  m_Data:
+    m_SerializedData: []
+  m_GUID: cf655d1bd9a465b4da2045302e9bdf45
+  m_SerializeEntries:
+  - m_GUID: 073e22e78fb0cf8418663cf0eb3250a5
+    m_Address: Assets/Prefabs/MiniGames/Picking/Picking.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1942338197979544, guid: 073e22e78fb0cf8418663cf0eb3250a5, type: 3}
+    m_TargetAsset: {fileID: 1942338197979544, guid: 073e22e78fb0cf8418663cf0eb3250a5, type: 3}
+  - m_GUID: b363324b2b112d1428f4cee61eb7a648
+    m_Address: Assets/FinalAssets/Picking/PickingItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1076732235218656, guid: b363324b2b112d1428f4cee61eb7a648, type: 3}
+    m_TargetAsset: {fileID: 1076732235218656, guid: b363324b2b112d1428f4cee61eb7a648, type: 3}
+  - m_GUID: b7801c57e6a4bc343a7c45bb95259fc4
+    m_Address: Assets/FinalAssets/Picking/PK_Basket.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1501031208412262, guid: b7801c57e6a4bc343a7c45bb95259fc4, type: 3}
+    m_TargetAsset: {fileID: 1501031208412262, guid: b7801c57e6a4bc343a7c45bb95259fc4, type: 3}
+  - m_GUID: fb40d04ae66fad544be7b83a1849485d
+    m_Address: Assets/FinalAssets/Picking/PlayerPKCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 899160951066302368, guid: fb40d04ae66fad544be7b83a1849485d, type: 3}
+    m_TargetAsset: {fileID: 899160951066302368, guid: fb40d04ae66fad544be7b83a1849485d, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c8ece9244e6e7d04dbda138626f35565, type: 2}
+    - {fileID: 11400000, guid: bf39a847ee86bf142bd2b39028f83c7f, type: 2}

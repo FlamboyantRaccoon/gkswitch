@@ -398,5 +398,6 @@ public class GC_GreatClimbing : MiniGameTemplate<GC_Logic, GC_GreatClimbing.Grea
             m_playerInfos[i].canvas.SetCameraRegion(playerCount);
         }
         HudManager.sSPLITHUD_COUNT = playerCount;
+        HudManager.sSPLITHUD_TYPE = HudManager.SplitHudType.quarter;
     }
 }

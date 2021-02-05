@@ -21,8 +21,8 @@ MonoBehaviour:
     m_Address: Assets/Art/Textures/2D/GUI/Core_TapisRoulant/IMG_plateBlue.png
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 2800000, guid: f515adfb7ab7606488763be9bd7a89ec, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: f515adfb7ab7606488763be9bd7a89ec, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
   m_SchemaSet:

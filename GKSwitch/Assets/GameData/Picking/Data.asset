@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7508f5ef725736540b77d25fcbc0f474, type: 3}
+  m_Name: Data
+  m_EditorClassIdentifier: 
+  m_botDatas:
+  - botDifficulty: 0
+    m_sComment: 
+    miniGamelevel: {x: 0, y: 0}
+    m_nGoodActionPointWin: 100
+    clickBySecond:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    goodClickPercent:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    bUseNewBehavior: 0
+    goodItemChance:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    badItemChance:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    perfectChance:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+  m_datas:
+  - gameDifficulty: 0
+    m_playerLevelAccepted: {x: 0, y: 0}
+    m_sComment: 
+    gameTime: 300
+    fTolerance: 100
+    fPerfectTolerance: 50
+    referenceSpeed: 220
+    sequencesArray:
+    - startTime: 0
+      nLanes: 3
+      itemsBySecond: 2
+      itemsWeight:
+        m_internalArray:
+        - 1
+        - 1
+        - 1
+        - 1
+        - 1
+        m_enumNames:
+        - basic
+        - fast
+        - doubleTouch
+        - bad
+        - doubleTouchOther

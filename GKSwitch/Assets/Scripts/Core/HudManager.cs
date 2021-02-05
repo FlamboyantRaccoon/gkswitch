@@ -13,8 +13,10 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
     public enum HudRootType { hud, popup, foreground }
     public enum PopupType { }
     public enum ForeHudType { aimingHud }
+    public enum SplitHudType { quarter, horizontal, vertical }
 
     public static int sSPLITHUD_COUNT = 1;
+    public static SplitHudType sSPLITHUD_TYPE = SplitHudType.quarter;
 
     [System.Serializable] private class GameHudPrefab : lwEnumArray<GameHudType, GameObject> { }; // dummy definition to use Unity serialization
     [System.Serializable] private class PopupHudPrefab : lwEnumArray<PopupType, GameObject> { }; // dummy definition to use Unity serialization
@@ -270,14 +272,30 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
             return rect;
         }
 
-        rect.x = (playerId % 2) * 0.5f;
-        rect.width = 0.5f;
-
-        if (sSPLITHUD_COUNT > 2)
+        switch( sSPLITHUD_TYPE )
         {
-            rect.height = 0.5f;
-            rect.y = (1 - ((int)(playerId / 2))) * 0.5f;
+            case SplitHudType.quarter:
+                {
+                    rect.x = (playerId % 2) * 0.5f;
+                    rect.width = 0.5f;
+
+                    if (sSPLITHUD_COUNT > 2)
+                    {
+                        rect.height = 0.5f;
+                        rect.y = (1 - ((int)(playerId / 2))) * 0.5f;
+                    }
+                }
+                break;
+            case SplitHudType.vertical:
+                {
+                    rect.width = 1f / sSPLITHUD_COUNT;
+                    rect.x = (playerId ) * rect.width;
+                }
+                break;
         }
+
+
+        
         return rect;
     }
 
