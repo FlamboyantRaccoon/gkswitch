@@ -14,8 +14,11 @@ public class InterRoundHud : MonoBehaviour
     [SerializeField]
     private InterRoundPlayerBoard m_playerBoardPrefab;
 
+    private bool m_bGameLaunch = false;
+
     public void OnEnable()
     {
+        m_bGameLaunch = false;
         lwTools.DestroyAllChildren(m_playerRoot.gameObject);
         BattleContext battleContext = BattleContext.instance;
 
@@ -47,7 +50,11 @@ public class InterRoundHud : MonoBehaviour
             case RRInputManager.InputActionType.ButtonRight:
             case RRInputManager.InputActionType.Fire:
                 {
-                    GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
+                    if(!m_bGameLaunch )
+                    {
+                        GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
+                        m_bGameLaunch = true;
+                    }
                 }
                 break;
         }

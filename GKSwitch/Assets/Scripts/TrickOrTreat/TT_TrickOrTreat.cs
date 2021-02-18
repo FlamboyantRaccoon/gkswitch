@@ -272,7 +272,10 @@ public class TT_TrickOrTreat : MiniGameTemplate<TT_Logic, TT_TrickOrTreat.TrickO
 
         GameObject.Destroy(m_candyRoot);
         GameObject.Destroy(m_enemyRoot);
-   
+
+        GameObject.Destroy(m_bkg.gameObject);
+        Addressables.ClearResourceLocators();
+
         base.Clean();
     }
 

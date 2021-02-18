@@ -147,16 +147,15 @@ public class MiniGame : MonoBehaviour
                     if (UpdateInit())
                     {
                         m_bInitDone = true;
-                        OnEndTransitionOut();
-                        /*                      GenericTransitionHud hud = HudManager.instance.GetHud<GenericTransitionHud>(HudManager.GameHudType.genericTransition);
-                                              if (hud == null)
-                                              {
-                                                  OnEndTransitionOut();
-                                              }
-                                              else
-                                              {
-                                                  hud.StartTransitionOut(OnEndTransitionOut);
-                                              }*/
+                        GenericTransitionHud hud = HudManager.instance.GetForeHud<GenericTransitionHud>(HudManager.ForeHudType.genericTransition);
+                        if (hud == null)
+                        {
+                            OnEndTransitionOut();
+                        }
+                        else
+                        {
+                            hud.StartTransitionOut(OnEndTransitionOut);
+                        }
                     }
                 }
                 break;

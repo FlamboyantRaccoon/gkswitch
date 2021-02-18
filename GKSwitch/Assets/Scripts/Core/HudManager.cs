@@ -12,7 +12,7 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
     public enum GameHudType { gameBkg, logoScreen, splashScreen, mainMenu, miniGame, countdown, interRound, resultHud }
     public enum HudRootType { hud, popup, foreground }
     public enum PopupType { }
-    public enum ForeHudType { aimingHud }
+    public enum ForeHudType { aimingHud, genericTransition }
     public enum SplitHudType { quarter, horizontal, vertical }
 
     public static int sSPLITHUD_COUNT = 1;

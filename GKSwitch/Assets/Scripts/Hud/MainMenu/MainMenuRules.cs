@@ -16,6 +16,7 @@ public class MainMenuRules : MainMenuStateObject
 
 
     private int m_gameCount = 1;
+    private bool m_gameLaunch = false;
 
     public void OnEnable()
     {
@@ -37,6 +38,7 @@ public class MainMenuRules : MainMenuStateObject
         }
 
         m_miniGameRoulette.Init();
+        m_gameLaunch = false;
     }
 
     public void OnDisable()
@@ -45,6 +47,18 @@ public class MainMenuRules : MainMenuStateObject
     }
 
     public void OnPlay()
+    {
+        if(m_gameLaunch )
+        {
+            return;
+        }
+        m_gameLaunch = true;
+        HudManager.instance.ShowForeHud(HudManager.ForeHudType.genericTransition);
+        GenericTransitionHud transitionHud = HudManager.instance.GetForeHud<GenericTransitionHud>( HudManager.ForeHudType.genericTransition);
+        transitionHud.StartTransitionIn(LaunchGame);
+    }
+
+    private void LaunchGame()
     {
         BattleContext.instance.SetBattleInfo(m_gameCount);
         BattleContext.instance.selectedMiniGame = m_miniGameRoulette.GetSelectedMiniGame();

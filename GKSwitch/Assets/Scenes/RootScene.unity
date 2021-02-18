@@ -840,8 +840,10 @@ MonoBehaviour:
   m_forePrefab:
     m_internalArray:
     - {fileID: 4182013233954935748, guid: fcda438d44f44ff4bbf0b75b130da735, type: 3}
+    - {fileID: 1216938991940312, guid: 020fb4f68a789ce4dbc9028dd33b09b2, type: 3}
     m_enumNames:
     - aimingHud
+    - genericTransition
   m_popupMaskPrefab: {fileID: 0}
   m_scorePopWinPrefab: {fileID: 114121905676386284, guid: b6df6d6c968d0cb418e93baa10c127be, type: 3}
   m_scorePopLosePrefab: {fileID: 114400010760095446, guid: 4b77bacf47039044ebfe865068efb4e7, type: 3}
