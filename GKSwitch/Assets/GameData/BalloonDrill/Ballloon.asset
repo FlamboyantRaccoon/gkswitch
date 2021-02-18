@@ -37,8 +37,8 @@ MonoBehaviour:
     sequencesArray:
     - startTime: 0
       colorCount: 6
-      balloonBySecond: 2
-      goodColorPercent: 20
+      balloonBySecond: 5
+      goodColorPercent: 50
       speed: {x: 50, y: 150}
       disruptiveElements: 
       disruptiveElementSpeed: {x: 0, y: 0}
