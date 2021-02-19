@@ -20,7 +20,8 @@ public class PlayerAim : MonoBehaviour
 
     public void Setup( int playerId )
     {
-        m_image.color = GameContext.instance.m_settings.playerSettings[playerId].color;
+        m_image.sprite = GameContext.instance.m_settings.playerSettings[playerId].cursor;
+//        m_image.color = GameContext.instance.m_settings.playerSettings[playerId].color;
     }
 
     // Update is called once per frame
@@ -32,5 +33,15 @@ public class PlayerAim : MonoBehaviour
     internal void SetPosition(Vector2 vector2)
     {
         m_rt.anchoredPosition = vector2;
+    }
+
+    internal void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    internal void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

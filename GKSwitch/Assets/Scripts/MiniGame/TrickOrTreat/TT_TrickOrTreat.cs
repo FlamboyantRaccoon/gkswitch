@@ -173,6 +173,8 @@ public class TT_TrickOrTreat : MiniGameTemplate<TT_Logic, TT_TrickOrTreat.TrickO
     protected void Awake()
     {
         InitGameDataAndBot(MiniGameManager.MiniGames.TrickOrTreat);
+        AimingHud aimingHud = HudManager.instance.GetForeHud<AimingHud>(HudManager.ForeHudType.aimingHud);
+        aimingHud.Hide();
     }
 
     protected override bool UpdateInit()
@@ -275,6 +277,9 @@ public class TT_TrickOrTreat : MiniGameTemplate<TT_Logic, TT_TrickOrTreat.TrickO
 
         GameObject.Destroy(m_bkg.gameObject);
         Addressables.ClearResourceLocators();
+
+        AimingHud aimingHud = HudManager.instance.GetForeHud<AimingHud>(HudManager.ForeHudType.aimingHud);
+        aimingHud.Show();
 
         base.Clean();
     }

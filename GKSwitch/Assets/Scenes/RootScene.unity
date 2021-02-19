@@ -1138,9 +1138,10 @@ MonoBehaviour:
     - {fileID: 190314890805292137, guid: cade30bc8fbe2ea439ae3cbbb02f5148, type: 3}
     - {fileID: 114946871412500282, guid: e9b399825301be3478227bb47a6bfe6a, type: 3}
     - {fileID: 3380004971812946122, guid: bd2d3fdc025236b47b4e93006e1bdec9, type: 3}
-    - {fileID: 0}
+    - {fileID: 2425013358731083607, guid: ffdcc443d7eb0334389107e79fce9647, type: 3}
     - {fileID: 407289320313659782, guid: a4b749008e140e340aa64834b7f9f1b9, type: 3}
     - {fileID: 0}
+    - {fileID: 6050342137246526422, guid: 247260e23b40b6845944729c7eb69731, type: 3}
     m_enumNames:
     - BalloonDrill
     - Banquet
@@ -1150,6 +1151,7 @@ MonoBehaviour:
     - Expressions
     - TrickOrTreat
     - SnowArena
+    - IceHockey
 --- !u!4 &1762571143
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,3 +1244,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &964055278783479100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1564579656538672, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_Name
+      value: TrickOrTreat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564579656538672, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465756853539402, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}

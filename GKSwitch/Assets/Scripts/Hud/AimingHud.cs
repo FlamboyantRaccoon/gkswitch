@@ -13,6 +13,8 @@ public class AimingHud : MonoBehaviour
     private RectTransform m_rt;
     private bool m_bInitialized = false;
 
+    private bool m_bVisible = true;
+
     public void Setup()
     {
         if( m_bInitialized )
@@ -33,8 +35,29 @@ public class AimingHud : MonoBehaviour
         m_bInitialized = true;
     }
 
+    public void Show()
+    {
+        foreach(KeyValuePair<int, PlayerAim> pair in m_aimDico )
+        {
+            pair.Value.Show();
+        }
+    }
+
+    public void Hide()
+    {
+        foreach (KeyValuePair<int, PlayerAim> pair in m_aimDico)
+        {
+            pair.Value.Hide();
+        }
+    }
+
     public void UpdateCursor( int id, Vector2 vPos )
     {
+        if( !m_bVisible )
+        {
+            return;
+        }
+
         //Debug.Log("UpdateCursor " + id + " : " + vPos);
         float fHalfWidth = m_rt.rect.width / 2f;
         float fHalfHeight = m_rt.rect.height / 2f;

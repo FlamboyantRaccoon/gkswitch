@@ -95,6 +95,6 @@ MonoBehaviour:
     - ghosty
     - pumpky
     - frankensty
-  m_playerScale: 0.3
-  m_enemyScale: 0.3
-  m_candyScale: 0.4
+  m_playerScale: 0.45
+  m_enemyScale: 0.45
+  m_candyScale: 0.6

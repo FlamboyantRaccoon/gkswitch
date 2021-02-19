@@ -17,6 +17,36 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 0cf3e91003c3f12448520b17e59ed475
   m_SerializeEntries:
+  - m_GUID: 1984ef62e6e0f244797c8ba34f636b8b
+    m_Address: Assets/FinalAssets/Expression/EX_Character.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 278aa56e7616d6f4f9770165c0a3146f
+    m_Address: Assets/FinalAssets/Expression/Expressions.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 643f29362fddef244aaf69c1fb286bca
+    m_Address: Assets/FinalAssets/IceHockey/IH_Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7a0e48c35a108464d80d60a9ccd1bff9
+    m_Address: Assets/FinalAssets/IceHockey/IH_Ball.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8c1c0e764ff6c55479b3ec3789dffab9
+    m_Address: Assets/FinalAssets/IceHockey/IH_MainObject.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: f515adfb7ab7606488763be9bd7a89ec
     m_Address: Assets/Art/Textures/2D/GUI/Core_TapisRoulant/IMG_plateBlue.png
     m_ReadOnly: 0

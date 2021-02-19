@@ -52,7 +52,7 @@ MonoBehaviour:
   - gameDifficulty: 0
     m_playerLevelAccepted: {x: 0, y: 0}
     m_sComment: 
-    gameTime: 300
+    gameTime: 30
     fTolerance: 100
     fPerfectTolerance: 50
     referenceSpeed: 220
