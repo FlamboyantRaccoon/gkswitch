@@ -16,7 +16,7 @@ MonoBehaviour:
   - botDifficulty: 1
     m_sComment: 
     miniGamelevel: {x: 0, y: 0}
-    m_nGoodActionPointWin: 0
+    m_nGoodActionPointWin: 100
     characterAnimationRatioReactionTime:
       serializedVersion: 2
       m_Curve:
@@ -59,15 +59,15 @@ MonoBehaviour:
     m_playerLevelAccepted: {x: 0, y: 0}
     m_sComment: 
     gameTime: 30
-    nPlayerChoiceCount: 7
+    nPlayerChoiceCount: 3
     sequencesArray:
     - startTime: 0
-      apparitionTime: {x: 0.3, y: 1.5}
+      apparitionTime: {x: 1, y: 1.5}
       idleTime: {x: 1.4, y: 2.2}
       disappearTime: {x: 0.3, y: 0.6}
-      timebetweenSpawn: {x: 1, y: 1.5}
+      timebetweenSpawn: {x: 1, y: 2}
       goodInRow: {x: 1, y: 5}
       badInRow: {x: 1, y: 2}
       goodExpressionPercent: 80
-      nEyeDifferentSpriteCount: 5
-      nMouthDifferentSpriteCount: 6
+      nEyeDifferentSpriteCount: 4
+      nMouthDifferentSpriteCount: 5

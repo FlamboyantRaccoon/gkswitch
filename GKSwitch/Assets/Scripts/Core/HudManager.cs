@@ -301,8 +301,9 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
 
     public void SpawnWinScore(Vector3 vWorldPos, int nScore, int playerId=0, string sPrefix = "", string sSuffix = "")
     {
+        GameSettings gameSettings = GameContext.instance.m_settings;
         HudScorePop pop = m_scorePopWin.GetInstance(transform);
-        pop.Setup(nScore, (HudScorePop elt) => { m_scorePopWin.PoolObject(elt); }, sPrefix, sSuffix);
+        pop.Setup(nScore, (HudScorePop elt) => { m_scorePopWin.PoolObject(elt); }, sPrefix, sSuffix, gameSettings.playerSettings[playerId].textMaterial );
         Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos, playerId);
         pop.transform.localPosition = vCanvasPos;
         /*        RectTransform popRect = pop.gameObject.GetComponent<RectTransform>();
@@ -311,8 +312,9 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
 
     public void SpawnLoseScore(Vector3 vWorldPos, int nScore, int playerId = 0)
     {
+        GameSettings gameSettings = GameContext.instance.m_settings;
         HudScorePop pop = m_scorePopLoose.GetInstance(transform);
-        pop.Setup(nScore, (HudScorePop elt) => { m_scorePopLoose.PoolObject(elt); });
+        pop.Setup(nScore, (HudScorePop elt) => { m_scorePopLoose.PoolObject(elt); }, "", "", gameSettings.playerSettings[playerId].textMaterial);
         Vector2 vCanvasPos = ComputeHudPosFromWorldPosition(vWorldPos, playerId);
         pop.transform.position = vCanvasPos;
         RectTransform popRect = pop.gameObject.GetComponent<RectTransform>();

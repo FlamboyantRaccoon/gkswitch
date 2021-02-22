@@ -11,6 +11,7 @@ public class GameSettings : ScriptableObject
         public Color color;
         public Sprite banner;
         public Sprite cursor;
+        public Material textMaterial;
     }
 
     public PlayerSetting[] playerSettings;

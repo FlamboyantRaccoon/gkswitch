@@ -20,51 +20,59 @@ MonoBehaviour:
   - m_GUID: 298eb2895f95e614c8688d43bb0158ef
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_Candy.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1186883059959056, guid: 298eb2895f95e614c8688d43bb0158ef, type: 3}
-    m_TargetAsset: {fileID: 1186883059959056, guid: 298eb2895f95e614c8688d43bb0158ef, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 581a09e6497f8924f873fc1ac46f1735
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_Reaper.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1513074377007780, guid: 581a09e6497f8924f873fc1ac46f1735, type: 3}
-    m_TargetAsset: {fileID: 1513074377007780, guid: 581a09e6497f8924f873fc1ac46f1735, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7e4b03e7d26bb944888ea1db1f8afcb0
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_CandyGold.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1588826723678086, guid: 7e4b03e7d26bb944888ea1db1f8afcb0, type: 3}
-    m_TargetAsset: {fileID: 1588826723678086, guid: 7e4b03e7d26bb944888ea1db1f8afcb0, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: a1e91616d2e7c8a4b90a9aa899ce5ad2
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_CandyGhost.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1482864611529272, guid: a1e91616d2e7c8a4b90a9aa899ce5ad2, type: 3}
-    m_TargetAsset: {fileID: 1482864611529272, guid: a1e91616d2e7c8a4b90a9aa899ce5ad2, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: a3fe254da955d5040bf1e44675580f0f
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_Player.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1373941778571590, guid: a3fe254da955d5040bf1e44675580f0f, type: 3}
-    m_TargetAsset: {fileID: 1373941778571590, guid: a3fe254da955d5040bf1e44675580f0f, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b2faba41dcde3f94bbe190f0903c3f55
     m_Address: Assets/FinalAssets/TrickOrTreats/TrickOrTreat.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1564579656538672, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
-    m_TargetAsset: {fileID: 1564579656538672, guid: b2faba41dcde3f94bbe190f0903c3f55, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: cf779600c9f133d4b8638341b5d43752
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_Pumpkin.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1419626429492190, guid: cf779600c9f133d4b8638341b5d43752, type: 3}
-    m_TargetAsset: {fileID: 1419626429492190, guid: cf779600c9f133d4b8638341b5d43752, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: e23c558bfec8f7e47933f3537fcbd515
     m_Address: Assets/FinalAssets/TrickOrTreats/TT_Ghost.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1154137065697694, guid: e23c558bfec8f7e47933f3537fcbd515, type: 3}
-    m_TargetAsset: {fileID: 1154137065697694, guid: e23c558bfec8f7e47933f3537fcbd515, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
   m_SchemaSet:

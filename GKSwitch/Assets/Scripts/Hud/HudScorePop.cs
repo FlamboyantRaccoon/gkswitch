@@ -13,8 +13,14 @@ public class HudScorePop : MonoBehaviour
     public void Setup(int nScore, 
         System.Action<HudScorePop> deleteAction,
         string sPrefix = "",
-        string sSuffix = "")
+        string sSuffix = "",
+        Material material = null)
     {
+        if( material!=null )
+        {
+            m_scoreText.fontMaterial = material;
+        }
+
         m_scoreText.text = sPrefix + nScore.ToString() + sSuffix;
         m_deleteAction = deleteAction;
     }

@@ -156,7 +156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863076131384822448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -504, y: 418, z: 100}
+  m_LocalPosition: {x: -504, y: 400, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1858160763542698152}
@@ -6464,22 +6464,22 @@ MonoBehaviour:
   - {fileID: 8310563398344334012}
   m_eyeSpritesArray:
   - {fileID: 21300000, guid: c061ce6434de9fe4abbedc6f0a8eb1b7, type: 3}
-  - {fileID: 21300000, guid: 0b7a1cc9ad849844d970c0c318660d80, type: 3}
+  - {fileID: 21300000, guid: 435522fe66a5bb84a9765b812eaaa735, type: 3}
   - {fileID: 21300000, guid: 17fea9bbc56456e4bbb6e99417ba9c9e, type: 3}
   - {fileID: 21300000, guid: b5e40a1554ac4154895727cf51023849, type: 3}
   - {fileID: 21300000, guid: 87161f3ecce4364439c163f9191d5d1c, type: 3}
   - {fileID: 21300000, guid: 61f5c96ee3e1a0045b227749cf16644a, type: 3}
   - {fileID: 21300000, guid: 2a923e256ff5d284c8ee484a60a108a8, type: 3}
-  - {fileID: 21300000, guid: 435522fe66a5bb84a9765b812eaaa735, type: 3}
+  - {fileID: 21300000, guid: 0b7a1cc9ad849844d970c0c318660d80, type: 3}
   m_mouthSpritesArray:
   - {fileID: 21300000, guid: 8bd37916bf8640049816673c4587d5fd, type: 3}
-  - {fileID: 21300000, guid: 3f56e5e5071e9464c8eb5a05c3ccbd1f, type: 3}
-  - {fileID: 21300000, guid: aba9c76b24be9f842916febdaf35c7dd, type: 3}
+  - {fileID: 21300000, guid: f4df5bdbc42cddd49ad2ed0ade7834c5, type: 3}
+  - {fileID: 21300000, guid: d6db95d794c98e24889642efeb8a8494, type: 3}
   - {fileID: 21300000, guid: 145d0ae136b968c45ac189797ea758af, type: 3}
   - {fileID: 21300000, guid: 8b3afba4ae574b74eb8bf4dbcb330226, type: 3}
   - {fileID: 21300000, guid: 3d2add320a7bb054ab5ac8b8b83ca265, type: 3}
-  - {fileID: 21300000, guid: d6db95d794c98e24889642efeb8a8494, type: 3}
-  - {fileID: 21300000, guid: f4df5bdbc42cddd49ad2ed0ade7834c5, type: 3}
+  - {fileID: 21300000, guid: aba9c76b24be9f842916febdaf35c7dd, type: 3}
+  - {fileID: 21300000, guid: 3f56e5e5071e9464c8eb5a05c3ccbd1f, type: 3}
   - {fileID: 21300000, guid: 31b6c1b8a7f71724ea4a1484fe3b2ea1, type: 3}
   - {fileID: 21300000, guid: e7d800524ccc0ef4ebebcb7d0acbb1b8, type: 3}
 --- !u!1 &1863804572194614648

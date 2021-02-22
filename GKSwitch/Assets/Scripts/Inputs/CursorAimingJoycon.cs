@@ -11,7 +11,7 @@ public class CursorAimingJoycon : CursorAiming
     Vector2 m_position = Vector2.zero;
     private float m_semiAmplitudeX = 30f;
     private float m_semiAmplitudeY = 20f;
-    private float m_tvDistance = 3000f;
+    private float m_tvDistance = 1000f;
 
 #if UNITY_SWITCH
     private nn.hid.NpadId nPadId;
@@ -111,29 +111,30 @@ public class CursorAimingJoycon : CursorAiming
     {
         ManageButtons();
 
+        
         SixAxisSensor.GetState(ref state, handle[0]);
         state.GetQuaternion(ref npadQuaternion);
         m_rawQuaternion.Set(npadQuaternion.x, npadQuaternion.z, npadQuaternion.y, -npadQuaternion.w);
 
-        Quaternion correctedQuaternion = m_rawQuaternion * Quaternion.Inverse( m_referenceQuaternion );
+        /* Quaternion correctedQuaternion = m_rawQuaternion * Quaternion.Inverse( m_referenceQuaternion );
 
-        float fAngleY = yRotation(correctedQuaternion).eulerAngles.y;
-        float fAngleX = xRotation(correctedQuaternion).eulerAngles.x;
-        //Debug.Log("fAngleX : " + fAngleX);
+         float fAngleY = yRotation(correctedQuaternion).eulerAngles.y;
+         float fAngleX = xRotation(correctedQuaternion).eulerAngles.x;
+         //Debug.Log("fAngleX : " + fAngleX);
 
-        Vector2 vOld;
-        if( fAngleY > 180f )
-        {
-            fAngleY -= 360f;
-        }
-        vOld.x = Mathf.Clamp((fAngleY / m_semiAmplitudeX), -1f, 1f);
-        if (fAngleX > 180f)
-        {
-            fAngleX -= 360f;
-        }
-        vOld.y = Mathf.Clamp((fAngleX / m_semiAmplitudeY), -1f, 1f);
-
+         Vector2 vOld;
+         if( fAngleY > 180f )
+         {
+             fAngleY -= 360f;
+         }
+         vOld.x = Mathf.Clamp((fAngleY / m_semiAmplitudeX), -1f, 1f);
+         if (fAngleX > 180f)
+         {
+             fAngleX -= 360f;
+         }
+         vOld.y = Mathf.Clamp((fAngleX / m_semiAmplitudeY), -1f, 1f);
         SixAxisSensor.GetState(ref state, handle[0]);
+         */
 
         Vector3 fwd = new Vector3(state.direction.y.x, state.direction.y.z, state.direction.y.y);
         Vector3 up = new Vector3(state.direction.z.x, state.direction.z.z, state.direction.z.y);
@@ -145,9 +146,9 @@ public class CursorAimingJoycon : CursorAiming
         {
             debugpoint.transform.position = hit.point;
             var localHit = m_projectionQuad.transform.InverseTransformPoint(hit.point);
-            Vector2 p = new Vector2(localHit.x * 2f, localHit.y *2f);
+            Vector2 p = new Vector2(localHit.x * 2f, localHit.y * 2f);
             m_position = p;
-//            Debug.Log("m_position : " + m_position + " localHit " + localHit );
+            //            Debug.Log("m_position : " + m_position + " localHit " + localHit );
         }
 
         debugCube.transform.rotation = m_rawQuaternion;
@@ -187,10 +188,13 @@ public class CursorAimingJoycon : CursorAiming
         // search if recalibrate
         Npad.GetState(ref nState, nPadId, nStyle);
 
-        if (Time.time - calibrationTimer >= 1f && (((nState.buttons & NpadButton.ZR) != 0 && (nState.buttons & NpadButton.R) != 0) || ((nState.buttons & NpadButton.ZL) != 0 && (nState.buttons & NpadButton.L) != 0)))
+        if ((((nState.buttons & NpadButton.ZR) != 0 && (nState.buttons & NpadButton.R) != 0) || ((nState.buttons & NpadButton.ZL) != 0 && (nState.buttons & NpadButton.L) != 0)))
         {
-            Debug.Log("Recalibrate");
-            Calibrate();
+            if(Time.time - calibrationTimer >= 1f )
+            {
+                Debug.Log("Recalibrate");
+                Calibrate();
+            }
         }
         else 
         {

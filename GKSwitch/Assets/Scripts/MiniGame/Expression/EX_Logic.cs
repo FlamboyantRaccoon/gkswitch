@@ -208,10 +208,22 @@ public class EX_Logic : MiniGameLogic
         m_nGoodExpressionArray = new ushort[nCount];
         m_fGoodPresentTime = new float[nCount];
         int nSelectedExpressionId = 0;
-        for (int nId = 0; nId < nCount; nId++)
+
+        m_nGoodExpressionArray[0] = GenerateSpecificExpressionMask( 2,2,4);
+        m_nGoodExpressionArray[1] = GenerateSpecificExpressionMask(0, 0, 2);
+        m_nGoodExpressionArray[2] = GenerateSpecificExpressionMask(3, 3, 3);
+
+
+        for (int nId = 3; nId < nCount; nId++)
         {
             GenerateExpressionMask(0f, false, out m_nGoodExpressionArray[nId], out nSelectedExpressionId, nId);
         }
+    }
+
+    private ushort GenerateSpecificExpressionMask( int nEyeLeft, int nEyeRight, int nMouth )
+    {
+        ushort nExpressionMask = (ushort)((nMouth << 8) + (nEyeRight << 4) + nEyeLeft);
+        return nExpressionMask;
     }
 
     private bool GenerateExpressionMask(float fGameTime, bool bGood, out ushort nExpressionMask, out int nSelectedExpressionId, int nControlLength = -1)
