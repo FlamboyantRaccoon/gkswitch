@@ -15,6 +15,8 @@ public class AimingHud : MonoBehaviour
 
     private bool m_bVisible = true;
 
+    private Rect[] m_specificCursorZone = null;
+
     public void Setup()
     {
         if( m_bInitialized )
@@ -51,6 +53,23 @@ public class AimingHud : MonoBehaviour
         }
     }
 
+    public void InitSpecificZone( int zoneCount )
+    {
+        m_specificCursorZone = new Rect[zoneCount];
+    }
+
+    public void SetSpecificZone( int id, Rect r )
+    {
+        Debug.Assert(m_specificCursorZone != null && id < m_specificCursorZone.Length, "ERROR ! Aiming Specific zone was not initialized");
+        m_specificCursorZone[id] = r;
+    }
+
+
+    public void ResetSpecificZone()
+    {
+        m_specificCursorZone = null;
+    }
+
     public void UpdateCursor( int id, Vector2 vPos )
     {
         if( !m_bVisible )
@@ -64,7 +83,11 @@ public class AimingHud : MonoBehaviour
         float fX = vPos.x * fHalfWidth;
         float fY = vPos.y * fHalfHeight;
 
-        if( HudManager.sSPLITHUD_COUNT > 1 )
+        if( m_specificCursorZone!=null )
+        {
+            ComputeSpecificZone(id, vPos, ref fX, ref fY);
+        }
+        else if( HudManager.sSPLITHUD_COUNT > 1 )
         {
             ComputeSplitPosition(id, ref fX, ref fY);
         }
@@ -75,6 +98,24 @@ public class AimingHud : MonoBehaviour
         {
             playerAim.SetPosition(new Vector2(fX, fY));
         }
+    }
+
+    private void ComputeSpecificZone(int id, Vector2 vPos, ref float fX, ref float fY)
+    {
+        Debug.Assert(m_specificCursorZone != null && id < m_specificCursorZone.Length && m_specificCursorZone[id] != null, "Specific cursor zone was baddly initialized");
+
+        vPos.x = Mathf.Clamp01((vPos.x / 2f) + 0.5f);
+        vPos.y = Mathf.Clamp01((vPos.y / 2f) + 0.5f);
+
+        fX = (m_specificCursorZone[id].x) + (m_specificCursorZone[id].width * (vPos.x));
+        fY = (m_specificCursorZone[id].y) + (m_specificCursorZone[id].height * (vPos.y));
+
+
+        //Debug.Log("ComputeSpecificZone " + vPos + " // " + m_specificCursorZone[id].x + " // " + m_specificCursorZone[id].width + " // " + fX);
+
+        Vector2 v = HudManager.instance.ComputeHudPosFromWorldPosition(new Vector3(fX, fY, 0f));
+        fX = v.x;
+        fY = v.y;
     }
 
     private void ComputeSplitPosition(int id, ref float fX, ref float fY)

@@ -89,7 +89,7 @@ public class MiniGameBasicHud : MonoBehaviour
         for( int i=0; i<m_playerLayout.Length; i++ )
         {
             m_playerLayout[i].gameObject.SetActive(i == nLayoutId);
-            m_playerLayout[i].gameObject.SetActive(false);
+            //m_playerLayout[i].gameObject.SetActive(false);
         }
         return m_playerLayout[nLayoutId];
     }

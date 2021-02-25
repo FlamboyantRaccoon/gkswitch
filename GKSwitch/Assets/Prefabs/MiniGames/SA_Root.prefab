@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5544486084605460580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366991613621948438}
+  - component: {fileID: 6776993085387427467}
+  m_Layer: 0
+  m_Name: SA_Root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &366991613621948438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544486084605460580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6776993085387427467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544486084605460580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e1cb5f2e364a44ea2fde92147280d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sMusicAmbName: music_frozen
+  m_miniGameHudPrefab: {fileID: 1059351490882735849, guid: 74cf896cc81436145a5a086e86fad757, type: 3}
+  m_nDataTestId: -1
+  m_nBotTestId: -1
+  m_gameBalancing: {fileID: 11400000, guid: 9f4e0b984ccdf3f4a8f5d7131ca23915, type: 2}
+  m_fGoldTargetTime: 3
+  m_playerScale: 0.3
+  m_obstacleScale: 0.2
+  m_mobileObstacleScale: 0.32
+  m_targetScale: 0.4
+  m_snowBallSpeedMultiplier: 8
+  m_snowBallMinSpeed: 1400
+  m_bkgReference:
+    m_AssetGUID: bcfacb20b7725a148b5ee12158e42026
+    m_SubObjectName: 
+  m_snowballReference:
+    m_AssetGUID: bfc3b271e4d132d4ab684dc75f3257d5
+    m_SubObjectName: 
+  m_targetReference:
+    m_AssetGUID: c155f035ed182b54ca258d719da58c10
+    m_SubObjectName: 
+  m_obstacleReference:
+    m_internalArray:
+    - m_AssetGUID: 5ad67efc801ac734f96d1509d01029d7
+      m_SubObjectName: 
+    - m_AssetGUID: a3b3b86244f4ab14f804002d68452917
+      m_SubObjectName: 
+    m_enumNames:
+    - nomobile
+    - mobile

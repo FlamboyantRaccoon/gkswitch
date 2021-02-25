@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SnowArena
+  m_EditorClassIdentifier: 
+  m_GroupName: SnowArena
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 4bb5aef10bac8c6489df4ba3cf48096e
+  m_SerializeEntries:
+  - m_GUID: 5ad67efc801ac734f96d1509d01029d7
+    m_Address: Assets/FinalAssets/SnowArena/SA_Obstacle 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 1278293244560716, guid: 5ad67efc801ac734f96d1509d01029d7, type: 3}
+    m_TargetAsset: {fileID: 1278293244560716, guid: 5ad67efc801ac734f96d1509d01029d7, type: 3}
+  - m_GUID: a3b3b86244f4ab14f804002d68452917
+    m_Address: Assets/FinalAssets/SnowArena/SA_MovingObstacle 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 1523982189132280, guid: a3b3b86244f4ab14f804002d68452917, type: 3}
+    m_TargetAsset: {fileID: 1523982189132280, guid: a3b3b86244f4ab14f804002d68452917, type: 3}
+  - m_GUID: bcfacb20b7725a148b5ee12158e42026
+    m_Address: Assets/FinalAssets/SnowArena/SnowArena.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 8566494228979301184, guid: bcfacb20b7725a148b5ee12158e42026, type: 3}
+    m_TargetAsset: {fileID: 8566494228979301184, guid: bcfacb20b7725a148b5ee12158e42026, type: 3}
+  - m_GUID: bfc3b271e4d132d4ab684dc75f3257d5
+    m_Address: Assets/FinalAssets/SnowArena/SA_Snowball 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 1181181198761398, guid: bfc3b271e4d132d4ab684dc75f3257d5, type: 3}
+    m_TargetAsset: {fileID: 1181181198761398, guid: bfc3b271e4d132d4ab684dc75f3257d5, type: 3}
+  - m_GUID: c155f035ed182b54ca258d719da58c10
+    m_Address: Assets/FinalAssets/SnowArena/SA_Target.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 1517874286372856, guid: c155f035ed182b54ca258d719da58c10, type: 3}
+    m_TargetAsset: {fileID: 1517874286372856, guid: c155f035ed182b54ca258d719da58c10, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d061d7a1df0f5fd47849ecce31e3eb20, type: 2}
+    - {fileID: 11400000, guid: 56e0bb57225093f42b8b7a71c7f5b225, type: 2}
