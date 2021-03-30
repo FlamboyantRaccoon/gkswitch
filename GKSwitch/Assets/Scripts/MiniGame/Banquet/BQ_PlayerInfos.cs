@@ -1,15 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BQ_PlayerInfos
 {
+    private BQ_OrderView m_orderView = null;
     private BQ_Meal m_dragObject = null;
     private int m_playerId;
 
     public void Setup( int playerId )
     {
         m_playerId = playerId;
+    }
+
+    public void SetOrderView( BQ_OrderView orderView )
+    {
+        m_orderView = orderView;
     }
 
     internal void ManageFireInput(Vector2 v, RRPlayerInput.ButtonPhase buttonPhase)
@@ -53,5 +60,20 @@ public class BQ_PlayerInfos
                 }
                 break;
         }
+    }
+
+    internal void SpawnOrder(BQ_Order order)
+    {
+        m_orderView.SetOrder(order);
+    }
+
+    internal Vector3 GetOrderPos()
+    {
+        return m_orderView.transform.position;
+    }
+
+    internal void Clear()
+    {
+        GameObject.Destroy(m_orderView.gameObject);
     }
 }

@@ -214,7 +214,6 @@ public class SA_SnowArena : MiniGameTemplate<SA_Logic, SA_SnowArena.snowData, SA
         aimingHud.ResetSpecificZone();
 
         GameObject.Destroy(m_bkg.gameObject);
-        Addressables.ClearResourceLocators();
         base.Clean();
     }
 

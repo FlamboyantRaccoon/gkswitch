@@ -95,7 +95,6 @@ public class IH_IceHockey : MiniGameTemplate<IH_Logic, IH_IceHockey.IceHockeyDat
         }
 
         GameObject.Destroy(m_bkg.gameObject);
-        Addressables.ClearResourceLocators();
         base.Clean();
     }
 

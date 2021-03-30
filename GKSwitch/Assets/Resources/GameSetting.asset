@@ -15,13 +15,17 @@ MonoBehaviour:
   playerSettings:
   - color: {r: 0.09019608, g: 0.41960788, b: 0.9607844, a: 1}
     banner: {fileID: 21300000, guid: 80bf3c762bd9055469ff04d889a3141a, type: 3}
-    cursor: {fileID: 21300000, guid: 50873ffa1e645bc4994d441263d58e8c, type: 3}
+    cursor: {fileID: 21300000, guid: 3c271c61cfaf9044697d5b8b7d30fe5c, type: 3}
+    textMaterial: {fileID: 0}
   - color: {r: 1, g: 0.25882354, b: 0.16862746, a: 1}
     banner: {fileID: 21300000, guid: 0d8c3aa21c491fc48a9d4a85152c5693, type: 3}
-    cursor: {fileID: 21300000, guid: 59c901bc76eb2ee429bd441acc64eaf1, type: 3}
-  - color: {r: 0.6431373, g: 0.1254902, b: 0.93725497, a: 1}
+    cursor: {fileID: 21300000, guid: 26d5790be12556b489e07ef5261dd3f6, type: 3}
+    textMaterial: {fileID: 0}
+  - color: {r: 1, g: 0.82745105, b: 0.16078432, a: 1}
     banner: {fileID: 21300000, guid: 08cb66563f4bab04499c99fe15043b03, type: 3}
-    cursor: {fileID: 21300000, guid: 4ca647a9603d787468143a4e098b5486, type: 3}
-  - color: {r: 0.60784316, g: 0.7294118, b: 0.93725497, a: 1}
+    cursor: {fileID: 21300000, guid: 51a4a488df8ba5b4e8edbfe7e7ec7849, type: 3}
+    textMaterial: {fileID: 0}
+  - color: {r: 0.32156864, g: 0.8745099, b: 0.09411766, a: 1}
     banner: {fileID: 21300000, guid: b3ce00b9991f58b43af42f691dacfca9, type: 3}
-    cursor: {fileID: 21300000, guid: 2f5efb323e9bace4aad922943cf074d7, type: 3}
+    cursor: {fileID: 21300000, guid: 1c46f70b7b1cd1f48a2f47e8c406a26e, type: 3}
+    textMaterial: {fileID: 0}

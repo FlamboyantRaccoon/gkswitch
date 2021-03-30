@@ -63,7 +63,6 @@ public class TMP_Template : MiniGameTemplate<TMP_Logic, TMP_Template.TmpData, TM
     public override void Clean()
     {
         GameObject.Destroy(m_bkg.gameObject);
-        Addressables.ClearResourceLocators();
         base.Clean();
     }
 

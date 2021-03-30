@@ -21,7 +21,7 @@ public class GC_WallElement : MonoBehaviour
         m_data = data;
         m_spriteRenderer.sprite = m_wallSprite[data.wallEltId];
         m_gripPool = gripPool;
-
+        
         float fSize = GetEltSize();
         Vector3 vPos = Vector3.zero;
         vPos.z = -10f;

@@ -22,6 +22,8 @@ public class BattleContext : lwSingleton<BattleContext>
     public MiniGameManager.MiniGames[] m_battleAvailableGames;
     public MiniGameManager.MiniGames selectedMiniGame { get { return m_selectedMiniGame; } set { m_selectedMiniGame = value; } }
     private MiniGameManager.MiniGames m_selectedMiniGame;
+    private List<int> m_roundMiniGameSelection;
+
 
     public MiniGameDifficulty botDifficulty
     {
@@ -109,7 +111,13 @@ public class BattleContext : lwSingleton<BattleContext>
 
     public MiniGameManager.MiniGames GetMiniGame()
     {
-        return selectedMiniGame;
+
+        if(m_roundMiniGameSelection!=null && m_roundMiniGameSelection.Count > currentRound && m_roundMiniGameSelection[currentRound]>=0 )
+        {
+            return (MiniGameManager.MiniGames)m_roundMiniGameSelection[currentRound];
+        }
+        int rnd = Random.Range(0, m_battleAvailableGames.Length);
+        return m_battleAvailableGames[rnd];
     }
 
     public void Reset()
@@ -118,9 +126,10 @@ public class BattleContext : lwSingleton<BattleContext>
         currentRound = 0;
     }
 
-    public void SetBattleInfo( int nRoundCount )
+    public void SetBattleInfo( int nRoundCount, List<int> roundMiniGameSelection)
     {
         m_nRoundCount = nRoundCount;
+        m_roundMiniGameSelection = roundMiniGameSelection;
     }
 
 /*    public void InitBotDifficulty(int[] nDifficulty = null)

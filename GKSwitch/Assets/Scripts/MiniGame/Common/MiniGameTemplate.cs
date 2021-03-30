@@ -71,7 +71,10 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
     protected bool CheckAndUpdateTime()
     {
         int nElapsedTime = (int)(Time.time - m_fStartTimer);
-        int nRemain = m_gameData.gameTime - nElapsedTime;
+
+        int totalTime = m_gameData.gameTime;
+        //totalTime = 3;
+        int nRemain = totalTime - nElapsedTime;
         if (nRemain < 0)
         {
             return false;

@@ -22,7 +22,7 @@ public class BQ_Meal : MonoBehaviour
     System.Func<float> m_getSpeedMul;
     System.Action<BQ_Meal> m_deleteAction;
     System.Func<bool> m_canMoveMeal;
-    System.Func<Vector3, bool> m_isMealOnTheBelt;
+    System.Func<Vector3, BQ_Belt> m_isMealOnTheBelt;
 
 
     private int m_nItemId;
@@ -37,6 +37,8 @@ public class BQ_Meal : MonoBehaviour
 
     private bool m_bIsDragged = false;
     private BQ_MealElt m_mealElt;
+    private Vector3 m_vDir;
+    private BQ_Belt m_belt;
 
     // Use this for initialization
     void Start()
@@ -48,10 +50,11 @@ public class BQ_Meal : MonoBehaviour
         System.Func<float> getSpeedMul,
         System.Action<BQ_Meal> deleteAction,
         System.Func<bool> canMoveMeal,
-        System.Func<Vector3, bool> isMealOnTheBelt,
+        System.Func<Vector3, BQ_Belt> isMealOnTheBelt,
         bool bUseColor,
         int nItemShownId,
-        BQ_MealElt eltPrefab
+        BQ_MealElt eltPrefab,
+        BQ_Belt belt
         )
     {
         m_nItemId = nItemId;
@@ -70,7 +73,38 @@ public class BQ_Meal : MonoBehaviour
 
         m_ColorSpriteRenderer.gameObject.SetActive(bUseColor);
         m_ColorSpriteRenderer.sprite = m_ColorSprites[m_nColorId];
+
+        SetBelt(belt);
+        m_belt = belt;
+        if( belt.m_bVertical )
+        {
+            m_vDir = Vector3.up * (belt.m_bIncrease ? 1 : -1);
+        }
+        else
+        {
+            m_vDir = Vector3.right * (belt.m_bIncrease ? 1 : -1);
+        }
     }
+
+    private void SetBelt( BQ_Belt belt)
+    {
+        m_belt = belt;
+        if( m_belt == null )
+        {
+            return;
+        }
+
+        if (m_belt.m_bVertical)
+        {
+            m_vDir = Vector3.up * (m_belt.m_bIncrease ? 1 : -1);
+        }
+        else
+        {
+            m_vDir = Vector3.right * (m_belt.m_bIncrease ? 1 : -1);
+        }
+
+    }
+
 
     /*public Sprite GetEltSprite(int nItemId)
     {
@@ -90,15 +124,50 @@ public class BQ_Meal : MonoBehaviour
         {
             if (m_vLaunchedSpeed != Vector3.zero)
             {
+                Debug.Log("#### m_vlaunch " + m_vLaunchedSpeed);
                 Vector3 vMove = m_vLaunchedSpeed * Time.deltaTime;
                 transform.Translate(vMove);
-                m_vLaunchedSpeed.x /= 1.08f;
+                float decelleration = 10000f * Time.deltaTime;
 
-                if (Mathf.Abs(m_vLaunchedSpeed.x) < 30f)
+                if(m_vLaunchedSpeed.x!=0 )
+                {
+                    if (m_vLaunchedSpeed.x > 0)
+                    {
+                        m_vLaunchedSpeed.x = m_vLaunchedSpeed.x > decelleration ? m_vLaunchedSpeed.x - decelleration : 0;
+                    }
+                    else
+                    {
+                        m_vLaunchedSpeed.x = m_vLaunchedSpeed.x < decelleration ? m_vLaunchedSpeed.x + decelleration : 0;
+                    }
+                }
+
+                if (m_vLaunchedSpeed.y != 0)
+                {
+                    if (m_vLaunchedSpeed.y > 0)
+                    {
+                        m_vLaunchedSpeed.y = m_vLaunchedSpeed.y > decelleration ? m_vLaunchedSpeed.y - decelleration : 0;
+                    }
+                    else
+                    {
+                        m_vLaunchedSpeed.y = m_vLaunchedSpeed.y < decelleration ? m_vLaunchedSpeed.y + decelleration : 0;
+                    }
+                }
+
+
+                /*m_vLaunchedSpeed.x *= (1f - (1f*Time.deltaTime));
+                m_vLaunchedSpeed.y *= (1f - (1f*Time.deltaTime));*/
+
+                if (Mathf.Abs(m_vLaunchedSpeed.x) + Mathf.Abs(m_vLaunchedSpeed.y) < 30f)
                 {
                     m_vLaunchedSpeed = Vector3.zero;
+                    BQ_Belt belt = m_isMealOnTheBelt(transform.position);
+                    if (belt != m_belt)
+                    {
+                        SetBelt(belt);
+                    }
+
                     // End thrown, test if still on the belt or not
-                    if (m_isMealOnTheBelt(transform.position))
+                    if (m_belt != null)
                     {
                         m_animator.SetBool("Hold", false);
                     }
@@ -108,18 +177,45 @@ public class BQ_Meal : MonoBehaviour
                     }
                 }
             }
-            else if (m_isMealOnTheBelt(transform.position))
+            else 
             {
-                float fSpeed = (m_getSpeedMul != null ? m_getSpeedMul() : 0f);
-                Vector3 vMove = Vector3.down * Time.deltaTime * fSpeed;
-                transform.Translate(vMove);
+                BQ_Belt belt = m_isMealOnTheBelt(transform.position);
+                if( belt!=m_belt)
+                {
+                    SetBelt(belt);
+                }
+
+                if( belt!=null )
+                {
+                    float fSpeed = (m_getSpeedMul != null ? m_getSpeedMul() : 0f);
+                    Vector3 vMove = m_vDir * Time.deltaTime * fSpeed;
+                    transform.Translate(vMove);
+                }
             }
 
         }
 
-        if (transform.position.y < BQ_Banquet.fMEAL_END_Y)
+        if (IsEndBeltReach())
         {
             DeleteMeal();
+        }
+    }
+
+    private bool IsEndBeltReach()
+    {
+        if( m_belt==null )
+        {
+            return false;
+        }
+
+        float fTestValue = m_belt.m_bVertical ? transform.position.y : transform.position.x;
+        if( m_belt.m_bIncrease )
+        {
+            return fTestValue > m_belt.m_vSizeDelta.y;
+        }
+        else
+        {
+            return fTestValue < m_belt.m_vSizeDelta.y;
         }
     }
 
@@ -193,14 +289,14 @@ public class BQ_Meal : MonoBehaviour
             OnEndDrag( playerId, vScreenPos);
         }
 
-/*        List<GameObject> hoverObject = eventData.hovered;
+        List<GameObject> hoverObject = GK_Tools.GetHoveredObjects(vScreenPos); // eventData.hovered;
         bool bFound = false;
         int nHoverObjIterator = 0;
-        CB_OrderView overOrder = null;
+        BQ_OrderView overOrder = null;
 
         while (nHoverObjIterator < hoverObject.Count && !bFound)
         {
-            overOrder = hoverObject[nHoverObjIterator].GetComponent<CB_OrderView>();
+            overOrder = hoverObject[nHoverObjIterator].GetComponent<BQ_OrderView>();
             if (overOrder != null && overOrder.bIsEmpty)
             {
                 bFound = true;
@@ -223,10 +319,10 @@ public class BQ_Meal : MonoBehaviour
                 m_overOrderView.SetHoover(true);
             }
         }
-        */
+        
         if (m_bIsDragged)
         {
-                    Debug.Log("OnDrag");
+            //        Debug.Log("OnDrag");
             transform.position = Camera.main.ViewportToWorldPoint(
                 new Vector3(vScreenPos.x, vScreenPos.y, 4f)
                 ) + _offsetToMouse;
@@ -254,21 +350,37 @@ public class BQ_Meal : MonoBehaviour
             if (m_overOrderView != null)
             {
                 m_animator.SetBool("Hold", false);
-                //m_overOrderView.PlaceMeal(this);
+
+                if( m_overOrderView.slotId == playerId )
+                {
+                    m_overOrderView.PlaceMeal(this);
+                }
+                else
+                {
+                    LaunchMeal(m_overOrderView.ComputeRejectLaunch());
+                }
+
             }
             else
             {
                 //        Debug.Log("OnEndDrag");
-                Vector3 v = transform.position;
-                v.z += 100f;
-                transform.position = v;
-                m_bIsDragged = false;
-                m_vLaunchedSpeed = (m_vDragPosition[m_vDragPosition.Count - 1] - m_vDragPosition[0]) * 5f;
-                m_vLaunchedSpeed.y = 0f;
-                m_vLaunchedSpeed.z = 0f;
-                m_mealElt.EnableCollider();
+                Vector3 vLaunch = (m_vDragPosition[m_vDragPosition.Count - 1] - m_vDragPosition[0]) * 5f;
+                vLaunch.y = 0f;
+                vLaunch.z = 0f;
+                LaunchMeal(vLaunch);
                 //FMODUnity.RuntimeManager.PlayOneShot("event:/Banquet/ReleaseTable");
             }
         }
+    }
+
+    void LaunchMeal( Vector3 launchDir )
+    {
+        Debug.Log("LaunchMeal : " + launchDir);
+        Vector3 v = transform.position;
+        v.z += 100f;
+        transform.position = v;
+        m_bIsDragged = false;
+        m_vLaunchedSpeed = launchDir;
+        m_mealElt.EnableCollider();
     }
 }

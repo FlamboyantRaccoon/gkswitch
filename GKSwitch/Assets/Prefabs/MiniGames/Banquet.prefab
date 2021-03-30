@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a764660c84605f04e9dd731551cecd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sMusicAmbName: 
+  m_sMusicAmbName: music_banquet
   m_miniGameHudPrefab: {fileID: 2895601034908117830, guid: 34467a5131947954688e6e9fd7642f45, type: 3}
   m_nDataTestId: -1
   m_nBotTestId: -1
@@ -67,4 +67,11 @@ MonoBehaviour:
   m_mealReference:
     m_AssetGUID: bf03121fd6a770843b54c4126cb5f0c7
     m_SubObjectName: 
+  m_OrderViewReference:
+    m_AssetGUID: dc7aa8a5226b25e40b680239093ce85d
+    m_SubObjectName: 
+  m_OrderBubbleReference:
+    m_AssetGUID: 9d1804d78ba7cbe498284cf077112a03
+    m_SubObjectName: 
   m_nBeltSize: 100
+  m_nBadPointsLost: 50

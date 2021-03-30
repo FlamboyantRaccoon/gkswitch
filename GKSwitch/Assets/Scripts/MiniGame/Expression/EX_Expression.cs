@@ -158,7 +158,6 @@ public class EX_Expression : MiniGameTemplate<EX_Logic, EX_Expression.Expression
         GameObject.Destroy(m_itemRoot);
 
         GameObject.Destroy(m_bkg.gameObject);
-        Addressables.ClearResourceLocators();
         base.Clean();
     }
 

@@ -276,7 +276,6 @@ public class TT_TrickOrTreat : MiniGameTemplate<TT_Logic, TT_TrickOrTreat.TrickO
         GameObject.Destroy(m_enemyRoot);
 
         GameObject.Destroy(m_bkg.gameObject);
-        Addressables.ClearResourceLocators();
 
         AimingHud aimingHud = HudManager.instance.GetForeHud<AimingHud>(HudManager.ForeHudType.aimingHud);
         aimingHud.Show();
@@ -551,6 +550,7 @@ public class TT_TrickOrTreat : MiniGameTemplate<TT_Logic, TT_TrickOrTreat.TrickO
         for ( int i=0; i<m_playerInfos.Length; i++ )
         {
             TT_Toasty toasty = GameObject.Instantiate<TT_Toasty>(m_toastyPrefab, transform);
+            toasty.playerId = i;
             Vector3 vPos = toasty.transform.position;
             vPos.x = m_bkg.m_modelPlaneRect.position.x;
             vPos.y = m_bkg.m_modelPlaneRect.position.y;

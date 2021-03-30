@@ -39,7 +39,7 @@ MonoBehaviour:
   - gameDifficulty: 0
     m_playerLevelAccepted: {x: 0, y: 0}
     m_sComment: 
-    gameTime: 3000
+    gameTime: 30
     grid:
       nRows: 10
       nCols: 20

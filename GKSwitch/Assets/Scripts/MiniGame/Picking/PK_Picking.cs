@@ -161,9 +161,8 @@ public class PK_Picking : MiniGameTemplate<PK_Logic, PK_Picking.PickingData, PK_
 
         m_itemPool.Destroy();
         GameObject.Destroy(m_itemRoot);
-
+        HudManager.sSPLITHUD_COUNT = 1;
         GameObject.Destroy(m_bkg.gameObject);
-        Addressables.ClearResourceLocators();
         base.Clean();
     }
 

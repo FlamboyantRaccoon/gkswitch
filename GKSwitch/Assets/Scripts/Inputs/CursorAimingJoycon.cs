@@ -64,6 +64,12 @@ public class CursorAimingJoycon : CursorAiming
             m_projectionQuad.transform.localScale = new Vector3(960f, 540f, 1f);
             m_projectionQuad.name = "projection_" + nPadId;
             m_projectionQuad.layer = LayerMask.NameToLayer(RAYCAST_LAYER + nPadId.ToString());
+            Renderer renderer = m_projectionQuad.GetComponent<Renderer>();
+            if( renderer!=null )
+            {
+                Debug.Log("disable renderer");
+                renderer.enabled = false;
+            }
         }
 
 

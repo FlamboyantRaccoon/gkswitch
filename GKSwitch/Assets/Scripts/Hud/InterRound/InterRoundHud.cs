@@ -52,7 +52,9 @@ public class InterRoundHud : MonoBehaviour
                 {
                     if(!m_bGameLaunch )
                     {
-                        GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
+                        HudManager.instance.ShowForeHud(HudManager.ForeHudType.genericTransition);
+                        GenericTransitionHud transitionHud = HudManager.instance.GetForeHud<GenericTransitionHud>(HudManager.ForeHudType.genericTransition);
+                        transitionHud.StartTransitionIn(LaunchGame);
                         m_bGameLaunch = true;
                     }
                 }
@@ -60,4 +62,10 @@ public class InterRoundHud : MonoBehaviour
         }
         return true;
     }
+
+    private void LaunchGame()
+    {
+        GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
+    }
+
 }

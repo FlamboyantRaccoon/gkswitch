@@ -161,6 +161,21 @@ public class BQ_Logic : MiniGameLogic
         return null;
     }
 
+    public OrderSpawn ComputeNewOrder()
+    {
+        BQ_Banquet.BanquetDataSequence sequence = GetSequence(gameTime);
+        int nItemId = RrRndHandler.RndRange(0, m_gameData.nElementsCount);
+
+        int nColorRnd = RrRndHandler.RndRange(0, 100);
+        int nColorId = nColorRnd < sequence.anyColorPercent ? -1 : RrRndHandler.RndRange(0, m_gameData.nColorsCount);
+
+        int nRnd = RrRndHandler.RndRange(0, 100);
+        bool bIsElt = (nRnd >= sequence.isNotEltPercent);
+        // s += " nItemId : " + nItemId + " / " + m_gameData.nElementsCount + " nRnd : " + nRnd + " seed " + RrRndHandler.seed() + "\n" ;
+
+       return new OrderSpawn(nItemId, nColorId, bIsElt);
+    }
+
     public OrderSpawn CheckIfOrderToSpawn()
     {
         if (m_orderSpawnQueue.Count == 0 || m_gameData == null)
@@ -318,6 +333,7 @@ public class BQ_Logic : MiniGameLogic
 
         //HudManager.instance.AddDebugText(s);
     }
+
 
 
     

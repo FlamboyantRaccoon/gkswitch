@@ -47,6 +47,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 9d1804d78ba7cbe498284cf077112a03
+    m_Address: Assets/FinalAssets/Banquet/CB_Order_bubble.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dc7aa8a5226b25e40b680239093ce85d
+    m_Address: Assets/FinalAssets/Banquet/CB_OrderView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: f515adfb7ab7606488763be9bd7a89ec
     m_Address: Assets/Art/Textures/2D/GUI/Core_TapisRoulant/IMG_plateBlue.png
     m_ReadOnly: 0

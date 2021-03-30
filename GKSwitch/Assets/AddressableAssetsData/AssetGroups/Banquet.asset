@@ -20,63 +20,59 @@ MonoBehaviour:
   - m_GUID: 03f560e0f76e74f4db81caff2377d713
     m_Address: Assets/FinalAssets/Banquet/MealElt5.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1549954237341018, guid: 03f560e0f76e74f4db81caff2377d713, type: 3}
-    m_TargetAsset: {fileID: 1549954237341018, guid: 03f560e0f76e74f4db81caff2377d713, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 0bdd742f28ec207429bc95d2718a8532
     m_Address: Assets/FinalAssets/Banquet/MealElt2.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1344901817801622, guid: 0bdd742f28ec207429bc95d2718a8532, type: 3}
-    m_TargetAsset: {fileID: 1344901817801622, guid: 0bdd742f28ec207429bc95d2718a8532, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 10fb61df54c4cf04d9c33a88e8b949ad
     m_Address: Assets/FinalAssets/Banquet/MealElt1.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1826483198565938, guid: 10fb61df54c4cf04d9c33a88e8b949ad, type: 3}
-    m_TargetAsset: {fileID: 1826483198565938, guid: 10fb61df54c4cf04d9c33a88e8b949ad, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 22065e99b179cea4fa759142aa00c77c
     m_Address: Assets/FinalAssets/Banquet/Banquet.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 477ec04b0941da144b2fa6c7ec617ce2
-    m_Address: Assets/FinalAssets/Banquet/CB_Order_bubble.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1254304839255016, guid: 477ec04b0941da144b2fa6c7ec617ce2, type: 3}
-    m_TargetAsset: {fileID: 1254304839255016, guid: 477ec04b0941da144b2fa6c7ec617ce2, type: 3}
-  - m_GUID: 96ddd9ee5717a004d9c0c371ef36d4d5
-    m_Address: Assets/FinalAssets/Banquet/CB_OrderView.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1018432939078486, guid: 96ddd9ee5717a004d9c0c371ef36d4d5, type: 3}
-    m_TargetAsset: {fileID: 1018432939078486, guid: 96ddd9ee5717a004d9c0c371ef36d4d5, type: 3}
   - m_GUID: b2c276e56c23b484b9ed20013102629e
     m_Address: Assets/FinalAssets/Banquet/MealElt0.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1034435459913710, guid: b2c276e56c23b484b9ed20013102629e, type: 3}
-    m_TargetAsset: {fileID: 1034435459913710, guid: b2c276e56c23b484b9ed20013102629e, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b340afcdacf90b748a2abb64bb3b2db3
     m_Address: Assets/FinalAssets/Banquet/MealElt4.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1360967578890346, guid: b340afcdacf90b748a2abb64bb3b2db3, type: 3}
-    m_TargetAsset: {fileID: 1360967578890346, guid: b340afcdacf90b748a2abb64bb3b2db3, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b8e4f9901270155428ee98a6ff32333e
     m_Address: Assets/FinalAssets/Banquet/MealElt3.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1133638842323790, guid: b8e4f9901270155428ee98a6ff32333e, type: 3}
-    m_TargetAsset: {fileID: 1133638842323790, guid: b8e4f9901270155428ee98a6ff32333e, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: bf03121fd6a770843b54c4126cb5f0c7
     m_Address: Assets/FinalAssets/Banquet/RootMeal.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 1721901123193558, guid: bf03121fd6a770843b54c4126cb5f0c7, type: 3}
-    m_TargetAsset: {fileID: 1721901123193558, guid: bf03121fd6a770843b54c4126cb5f0c7, type: 3}
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
   m_SchemaSet:

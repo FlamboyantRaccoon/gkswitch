@@ -10,7 +10,7 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
     public const float fMEAL_START_Y = 800f;
     public const float fMEAL_END_Y = -800f;
 
-    public enum BanquetLoadable { bkg=1, meal=2, mealElt = 4 }
+    public enum BanquetLoadable { bkg=1, meal=2, mealElt = 4, orderView=8, orderBubble=16 }
 
 
     [System.Serializable]
@@ -53,15 +53,23 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
     AssetReference[] m_mealEltReferences;
     [SerializeField]
     AssetReference m_mealReference;
+    [SerializeField]
+    AssetReference m_OrderViewReference;
+    [SerializeField]
+    AssetReference m_OrderBubbleReference;
 
     [Header("Game Config")]
     [SerializeField]
     private int m_nBeltSize = 100;
+    [SerializeField]
+    private int m_nBadPointsLost = 50;
 
     private lwObjectPool<BQ_Meal> m_mealPool;
     private GameObject m_mealRoot;
     private BQ_MealElt[] m_mealEltPrefabs;
     private BQ_Meal m_mealPrefab;
+    private BQ_OrderView m_orderViewPrefab;
+    private BQ_OrderBubble m_orderBubblePrefab;
     private BQ_MainObject m_bkg;
     private int m_loadMask = 0;
     private int m_loadMaskComplete = (1 << (System.Enum.GetNames(typeof(BanquetLoadable)).Length)) - 1;
@@ -74,7 +82,6 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
     {
         InitGameDataAndBot(MiniGameManager.MiniGames.Banquet);
         m_gameLogic = new BQ_Logic();
-        m_gameLogic.Init(m_nMiniGameDataSelected, m_gameData);
         SetupLogicDelegate();
 
         m_gameStats = new int[2] { 0, 0 };
@@ -123,7 +130,41 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
         {
             return false;
         }
-        return base.UpdateInit();
+
+        bool bReturn = base.UpdateInit();
+        if (bReturn)
+        {
+            InitAfterLoad();
+        }
+        return bReturn;
+    }
+
+    private void InitAfterLoad()
+    {
+        m_gameLogic.Init(m_nMiniGameDataSelected, m_gameData);
+        BQ_MainObject.OrderLayout orderLayout = m_bkg.m_orderLayouts[m_playerInfos.Length - 1];
+        for (int nOrderViewId = 0; nOrderViewId < m_playerInfos.Length; nOrderViewId++)
+        {
+            BQ_OrderView orderView = GameObject.Instantiate(m_orderViewPrefab, orderLayout.m_orderSpots[nOrderViewId].transform);
+            BQ_OrderBubble orderBubble = GameObject.Instantiate(m_orderBubblePrefab, orderLayout.m_orderSpots[nOrderViewId].transform);
+            orderBubble.transform.localPosition = orderLayout.m_orderSpots[nOrderViewId].m_orderBubbleRoot.localPosition;
+            orderBubble.SetTips(!orderLayout.m_orderSpots[nOrderViewId].m_bIsBubbleUp, orderLayout.m_orderSpots[nOrderViewId].m_bIsBubbleLeft);
+
+            orderView.bubble = orderBubble;
+            orderView.SetSlotId(nOrderViewId, orderLayout.m_orderSpots[nOrderViewId].m_bIsUpSpot);
+            orderView.onEndMealGiven = OnOrderFinish;
+            orderView.onMealResult = TellValidMeal;
+            orderView.SetActive(false);
+
+            m_playerInfos[nOrderViewId].SetOrderView(orderView);
+            CheckOrder(nOrderViewId);
+        }
+    }
+
+    private void OnOrderFinish(int nSpotId)
+    {
+        CheckOrder(nSpotId);
+        //ReleaseSpotId(nSpotId);
     }
 
     public override void Clean()
@@ -131,7 +172,22 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
         m_mealPool.Destroy();
         GameObject.Destroy(m_mealRoot);
 
-        GameObject.Destroy(m_bkg);
+        for (int i=0; i<m_playerInfos.Length; i++ )
+        {
+            m_playerInfos[i].Clear();
+        }
+        m_playerInfos = null;
+
+        GameObject.Destroy(m_bkg.gameObject);
+
+        m_mealReference.ReleaseAsset();
+        m_bkgReference.ReleaseAsset();
+        m_OrderViewReference.ReleaseAsset();
+        m_OrderBubbleReference.ReleaseAsset();
+        for (int i = 0; i < m_mealEltReferences.Length; i++)
+        {
+            m_mealEltReferences[i].ReleaseAsset();
+        }
         base.Clean();
     }
 
@@ -139,13 +195,13 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
     {
         m_gameLogic.Update();
         CheckSpawn();
-        CheckOrder();
+        //CheckOrder();
     }
 
     protected override bool UpdateGamePlay()
     {
         CheckSpawn();
-        CheckOrder();
+        //CheckOrder();
         m_gameLogic.Update();
         return CheckAndUpdateTime();
     }
@@ -163,7 +219,7 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
 
     private void SetConveyorSpeed(float fSpeed)
     {
-        m_bkg.belt.SetSpeed(fSpeed);
+        m_bkg.SetSpeed(fSpeed);
         m_fConveyorSpeed = fSpeed;
     }
 
@@ -175,6 +231,13 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
         // meal
         RR_AdressableAsset.instance.LoadAsset<GameObject>(m_mealReference, OnMealLoad);
 
+        // Order View
+        RR_AdressableAsset.instance.LoadAsset<GameObject>(m_OrderViewReference, OnOrderLoad);
+
+        // Order Buble
+        RR_AdressableAsset.instance.LoadAsset<GameObject>(m_OrderBubbleReference, OnBubbleLoad);
+
+
         // meal Elt
         m_mealEltPrefabs = new BQ_MealElt[m_mealEltReferences.Length];
         for ( int i=0; i<m_mealEltReferences.Length; i++ )
@@ -182,6 +245,25 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
             int id = i;
             RR_AdressableAsset.instance.LoadAsset<GameObject>(m_mealEltReferences[i], (AsyncOperationHandle<GameObject> obj) => {
                 m_mealEltPrefabs[id] = obj.Result.GetComponent<BQ_MealElt>(); } );
+        }
+    }
+
+    private void OnBubbleLoad(AsyncOperationHandle<GameObject> obj)
+    {
+        if (obj.Status == AsyncOperationStatus.Succeeded)
+        {
+            m_orderBubblePrefab = obj.Result.GetComponent<BQ_OrderBubble>();
+        }
+
+        m_loadMask |= (int)BanquetLoadable.orderBubble;
+    }
+
+    private void OnOrderLoad(AsyncOperationHandle<GameObject> obj)
+    {
+        if (obj.Status == AsyncOperationStatus.Succeeded)
+        {
+            m_orderViewPrefab = obj.Result.GetComponent<BQ_OrderView>();
+            m_loadMask |= (int)BanquetLoadable.orderView;
         }
     }
 
@@ -242,9 +324,12 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
     {
         BQ_Meal meal = m_mealPool.GetInstance(transform);
         float fZ = 3f;
-        meal.transform.localPosition = new Vector3((fSpawnerRatioPos - 0.5f) * m_nBeltSize, fMEAL_START_Y, fZ);
+
+        BQ_Belt belt = m_bkg.belt[UnityEngine.Random.Range(0, m_bkg.belt.Length)];
+
+        meal.transform.localPosition = belt.ComputeStartPos(); // new Vector3((fSpawnerRatioPos - 0.5f) * m_nBeltSize, fMEAL_START_Y, fZ);
         meal.Setup(nItemId, nColorId, GetBeltSpeed, DeleteMeal, CanMoveMeal, IsMealOnTheBelt, m_gameLogic.HasColorInGame(), m_gameLogic.reorderEltId[nItemId],
-            m_mealEltPrefabs[m_gameLogic.reorderEltId[nItemId]]);
+            m_mealEltPrefabs[m_gameLogic.reorderEltId[nItemId]], belt );
     }
 
     private float GetBeltSpeed()
@@ -263,32 +348,50 @@ public class BQ_Banquet : MiniGameTemplate<BQ_Logic, BQ_Banquet.BanquetData, BQ_
         return m_miniGameState == MiniGameState.playing;
     }
 
-    private bool IsMealOnTheBelt(Vector3 vPos)
+    private BQ_Belt IsMealOnTheBelt(Vector3 vPos)
     {
-        return Mathf.Abs(vPos.x) - m_nBeltSize / 2f <= 0f;
+        BQ_Belt belt = null;
+        int index = 0;
+        while( index<m_bkg.belt.Length && belt == null )
+        {
+            if( m_bkg.belt[index].IsMealOnBelt(vPos))
+            {
+                belt = m_bkg.belt[index];
+            }
+            else
+            {
+                index++;
+            }
+        }
+        return belt;
     }
 
-    private void TellValidMeal(bool bValid, int nSpotId)
+    private void TellValidMeal(bool bValid, int nPlayerId)
     {
-        /*int nPoints = m_nGoodPointsWin;
+        int nPoints = m_nGoodPointsWin;
         if (bValid)
         {
-            BattleContext.instance.AddPoint(nPoints);
-            HudManager.instance.SpawnWinScore(m_orderSpots[nSpotId].transform.position, nPoints);
+            BattleContext.instance.AddPoint(nPoints, nPlayerId);
+            HudManager.instance.SpawnWinScore( m_playerInfos[nPlayerId].GetOrderPos(), nPoints, nPlayerId);
         }
         else
         {
             BattleContext.instance.AddPoint(-m_nBadPointsLost);
-            HudManager.instance.SpawnLoseScore(m_orderSpots[nSpotId].transform.position, -m_nBadPointsLost);
+            HudManager.instance.SpawnLoseScore(m_playerInfos[nPlayerId].GetOrderPos(), -m_nBadPointsLost, nPlayerId);
         }
 
-        m_conveyorBeltStats[bValid ? 0 : 1]++;
-        CB_Order order = m_orderViews[nSpotId].GetOrder();
-        m_networkConfig.ReleaseOrder(order.eltId, order.colorId, order.isElt);*/
+//        m_conveyorBeltStats[bValid ? 0 : 1]++;
     }
 
-    private void CheckOrder()
+    private void CheckOrder( int playerId )
     {
+        BQ_Logic.OrderSpawn spawn = m_gameLogic.ComputeNewOrder();
+        BQ_Order order = new BQ_Order(spawn.nItemId, spawn.nColorId, spawn.bIsElement, m_gameLogic.reorderEltId[spawn.nItemId]);
+        m_playerInfos[playerId].SpawnOrder(order);
+
+
+
+
         /*bool bContinue = ComputeFreeSpotCount() > 0;
 
         while (bContinue)
