@@ -238,6 +238,28 @@
                 },
                 {
                     "name": "",
+                    "id": "a1b11f23-c1a2-45cd-80ef-5afff4347fc3",
+                    "path": "<DualShockGamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ButtonTop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "834e1836-a1fe-45b4-bfee-e03856dc2abf",
+                    "path": "<SwitchProControllerHID>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SwitchPro",
+                    "action": "ButtonTop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "174c434c-21e5-452c-9f4b-07cc09f807c8",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",

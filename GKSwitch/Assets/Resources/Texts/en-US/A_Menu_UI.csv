@@ -4,3 +4,6 @@ str_flags_2;
 str_flags_1;
 str_flags_go;
 str_flags_finished;
+str_controlInfo;
+str_controlCalibrate;
+str_controlConfirm;

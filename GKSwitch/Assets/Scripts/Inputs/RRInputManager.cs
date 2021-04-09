@@ -27,7 +27,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
 
     public GameObject playerInputPrefab = null;
 
-    public enum InputActionType { Move, ButtonRight, Fire }
+    public enum InputActionType { Move, ButtonTop, ButtonRight, ButtonDown, ButtonLeft, Fire }
     public enum InputType { Touch, Controller }
 
     public static InputType m_lastInputType = InputType.Touch;
@@ -61,7 +61,7 @@ public class RRInputManager : lwSingletonMonoBehaviour<RRInputManager>
     #region unityEvent
     public void Move(InputAction.CallbackContext context)
     {
-        MoveDirection moveDirection = MoveDirection.none;
+        //MoveDirection moveDirection = MoveDirection.none;
         if (context.started)
         {
             Vector2 vector2 = context.ReadValue<Vector2>();

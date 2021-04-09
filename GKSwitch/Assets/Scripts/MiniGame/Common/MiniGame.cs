@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class MiniGame : MonoBehaviour
 { 
-    public enum MiniGameState { init, countdown, playing, ended }
+    public enum MiniGameState { init, validControl, countdown, playing, ended }
 
     [SerializeField]
     string m_sMusicAmbName = "";
@@ -86,6 +86,11 @@ public class MiniGame : MonoBehaviour
         hud.onEndIntroAnimation = OnEndCountdownIntro;
     }
 
+    protected virtual void StartGameTimer()
+    {
+
+    }
+
     private void OnEndCountdownIntro()
     {
         StartCountdown321Animation();
@@ -131,10 +136,18 @@ public class MiniGame : MonoBehaviour
         BattleContext.instance.ManageEndMiniGame();
     }
 
+    private void OnEndControlValid()
+    {
+        Debug.Log("OnEndControlValid");
+        StartCountdown();
+    }
 
     private void OnEndTransitionOut()
     {
-        StartCountdown();
+        m_miniGameState = MiniGameState.validControl;
+
+        FtuePopup ftuePop = HudManager.instance.ShowPopup<FtuePopup>(HudManager.PopupType.tutorial, false);
+        ftuePop.Setup(BattleContext.instance.GetMiniGame(), OnEndControlValid);
     }
 
     private void Update()
@@ -178,9 +191,9 @@ public class MiniGame : MonoBehaviour
         }
     }
 
-    protected virtual void InitWarmUp()
+    protected void InitWarmUp()
     {
-
+        StartGameTimer();
     }
 
     protected virtual void UpdateWarmUp()

@@ -8,10 +8,14 @@ using UnityEngine;
 public class CursorAimingJoycon : CursorAiming
 {
     private const string RAYCAST_LAYER = "RaycastQuad_";
+    private const float TV_DISTANCE_MIN = 500f;
+    private const float TV_DISTANCE_INTER = 100f;
+
     Vector2 m_position = Vector2.zero;
     private float m_semiAmplitudeX = 30f;
     private float m_semiAmplitudeY = 20f;
     private float m_tvDistance = 1000f;
+
 
 #if UNITY_SWITCH
     private nn.hid.NpadId nPadId;
@@ -27,6 +31,7 @@ public class CursorAimingJoycon : CursorAiming
 
     private SixAxisSensorHandle[] handle = new SixAxisSensorHandle[2];
     private SixAxisSensorState state = new SixAxisSensorState();
+    private SixAxisSensorState calibrationState = new SixAxisSensorState();
     private int handleCount = 0;
     private Quaternion m_rawQuaternion;
     private nn.util.Float4 npadQuaternion = new nn.util.Float4();
@@ -55,32 +60,37 @@ public class CursorAimingJoycon : CursorAiming
     public void Calibrate()
     {
         calibrationTimer = Time.time;
-        m_referenceQuaternion.Set( m_rawQuaternion.x, m_rawQuaternion.y, m_rawQuaternion.z, m_rawQuaternion.w );
-        Debug.Log("m_referenceQuaternion : " + m_referenceQuaternion.eulerAngles);
+        //m_referenceQuaternion.Set( m_rawQuaternion.x, m_rawQuaternion.y, m_rawQuaternion.z, m_rawQuaternion.w );
+        //Debug.Log("m_referenceQuaternion : " + m_referenceQuaternion.eulerAngles);
 
-        if( m_projectionQuad==null )
+        
+        SixAxisSensor.GetState(ref calibrationState, handle[0]);
+        UpdateProjectionQuad();
+    }
+
+    private void UpdateProjectionQuad()
+    {
+        if (m_projectionQuad == null)
         {
             m_projectionQuad = GameObject.CreatePrimitive(PrimitiveType.Quad);
             m_projectionQuad.transform.localScale = new Vector3(960f, 540f, 1f);
             m_projectionQuad.name = "projection_" + nPadId;
             m_projectionQuad.layer = LayerMask.NameToLayer(RAYCAST_LAYER + nPadId.ToString());
             Renderer renderer = m_projectionQuad.GetComponent<Renderer>();
-            if( renderer!=null )
+            if (renderer != null)
             {
                 Debug.Log("disable renderer");
                 renderer.enabled = false;
             }
         }
 
-
-        SixAxisSensor.GetState(ref state, handle[0]);
-
-        Vector3 fwd = new Vector3(state.direction.y.x, state.direction.y.z, state.direction.y.y);
-        Vector3 up = new Vector3(state.direction.z.x, state.direction.z.z, state.direction.z.y);
+        Vector3 fwd = new Vector3(calibrationState.direction.y.x, calibrationState.direction.y.z, calibrationState.direction.y.y);
+        Vector3 up = new Vector3(calibrationState.direction.z.x, calibrationState.direction.z.z, calibrationState.direction.z.y);
 
         // If we want to re-center the cursor we move the quad billboard
+        float tvDistance = TV_DISTANCE_MIN + TV_DISTANCE_INTER * m_sensibility;
         m_projectionQuad.transform.rotation = Quaternion.LookRotation(fwd, up);
-        m_projectionQuad.transform.position = fwd * m_tvDistance;
+        m_projectionQuad.transform.position = fwd * tvDistance;
     }
 
     public void InitSensor()
@@ -121,8 +131,8 @@ public class CursorAimingJoycon : CursorAiming
         SixAxisSensor.GetState(ref state, handle[0]);
         state.GetQuaternion(ref npadQuaternion);
         m_rawQuaternion.Set(npadQuaternion.x, npadQuaternion.z, npadQuaternion.y, -npadQuaternion.w);
-
-        /* Quaternion correctedQuaternion = m_rawQuaternion * Quaternion.Inverse( m_referenceQuaternion );
+        /*
+         Quaternion correctedQuaternion = m_rawQuaternion * Quaternion.Inverse( m_referenceQuaternion );
 
          float fAngleY = yRotation(correctedQuaternion).eulerAngles.y;
          float fAngleX = xRotation(correctedQuaternion).eulerAngles.x;
@@ -184,6 +194,11 @@ public class CursorAimingJoycon : CursorAiming
         return new Quaternion(0, 0, Mathf.Sin(theta), Mathf.Cos(theta));
     }
 
+    public override void UpdateSensibility()
+    {
+        UpdateProjectionQuad();
+    }
+
     public override Vector2 GetCursorPos()
     {
         return m_position;
@@ -239,6 +254,21 @@ public class CursorAimingJoycon : CursorAiming
         if (nState.GetButtonDown(NpadButton.A) || nState.GetButtonDown(NpadButton.Right))
         {
             ManageButton(RRInputManager.InputActionType.ButtonRight);
+        }
+
+        if (nState.GetButtonDown(NpadButton.X) || nState.GetButtonDown(NpadButton.Up))
+        {
+            ManageButton(RRInputManager.InputActionType.ButtonTop);
+        }
+
+        if (nState.GetButtonDown(NpadButton.Y) || nState.GetButtonDown(NpadButton.Left))
+        {
+            ManageButton(RRInputManager.InputActionType.ButtonLeft);
+        }
+
+        if (nState.GetButtonDown(NpadButton.B) || nState.GetButtonDown(NpadButton.Down))
+        {
+            ManageButton(RRInputManager.InputActionType.ButtonDown);
         }
 
     }

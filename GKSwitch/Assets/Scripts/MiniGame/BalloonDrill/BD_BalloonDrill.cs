@@ -150,10 +150,7 @@ public class BD_BalloonDrill : MiniGameTemplate<BD_Logic, BD_BalloonDrill.Balloo
         m_hud.SetObjective(nObjectiveId >= 0 ? m_balloonPrefab.m_spritesArray[nObjectiveId] : null);
     }
 
-    protected override void InitWarmUp()
-    {
-        m_gameLogic.fGameStartTime = Time.time;
-    }
+
 
     protected override void UpdateWarmUp()
     {

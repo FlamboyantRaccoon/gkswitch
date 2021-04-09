@@ -22,6 +22,7 @@ public class RRPlayerInput : MonoBehaviour
     public UpdateFireDlg m_fireDlg;
 
     public int Id { get { return m_nId; } }
+    public CursorAiming cursorAiming { get{ return m_cursorAiming; }}
 
     private bool m_bOnFire = false;
     private RRSwitchMapping switchMapping = null;
@@ -194,6 +195,18 @@ public class RRPlayerInput : MonoBehaviour
         else
         {
             RRInputManager.instance.Manageinput(context);
+        }
+    }
+
+    internal void Recalibrate()
+    {
+        if( m_cursorAiming is CursorAimingJoycon )
+        {
+            ((CursorAimingJoycon)m_cursorAiming).Calibrate();
+        }
+        else
+        {
+            Debug.Log("I'm not a Joycon");
         }
     }
 

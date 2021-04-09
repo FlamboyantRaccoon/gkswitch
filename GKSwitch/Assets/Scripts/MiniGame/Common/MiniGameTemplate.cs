@@ -44,6 +44,11 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
         InstanciateHud();
     }
 
+    protected override void StartGameTimer()
+    {
+        m_gameLogic.StartGameTime();
+    }
+
     protected void InitGameDataAndBot(MiniGameManager.MiniGames miniGame)
     {
         int playerLevel = 0;
@@ -84,15 +89,6 @@ public class MiniGameTemplate<TMgLogic, TMgData, TMgBot, TMgHud, TMgBalancing> :
             m_hud.UpdateTime(nRemain);
         }
         return true;
-    }
-
-
-    protected override void InitWarmUp()
-    {
-/*        if (m_networkConfig != null)
-        {
-            m_networkConfig.fGameStartTime = Time.time;
-        }*/
     }
 
     protected virtual void SetupLogicDelegate()

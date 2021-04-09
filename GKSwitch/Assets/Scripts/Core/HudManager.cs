@@ -11,7 +11,7 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
 {
     public enum GameHudType { gameBkg, logoScreen, splashScreen, mainMenu, miniGame, countdown, interRound, resultHud }
     public enum HudRootType { hud, popup, foreground }
-    public enum PopupType { }
+    public enum PopupType { tutorial }
     public enum ForeHudType { aimingHud, genericTransition }
     public enum SplitHudType { quarter, horizontal, vertical }
 
@@ -73,6 +73,8 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         //ShowHud(GameHudType.splashScreen);
 
     }
+
+
 
     public Vector2 GetUIPosition( Vector2 vScreenPos )
     {
@@ -200,7 +202,7 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         {
             m_popupArray[nPopupId].SetActive(false);
         }
-        m_popupMask.gameObject.SetActive(false);
+        //m_popupMask.gameObject.SetActive(false);
         //m_popupRoot.gameObject.SetActive(false);
 
         m_onPopupHideDlg?.Invoke();
@@ -227,8 +229,8 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
             m_popupArray[nPopupId].SetActive(true);
         }
 
-        m_popupMask.gameObject.SetActive(true);
-        m_popupMask.transform.SetAsLastSibling();
+        //m_popupMask.gameObject.SetActive(true);
+        //m_popupMask.transform.SetAsLastSibling();
 
         if( bUseAnimator )
         {
@@ -249,6 +251,7 @@ public class HudManager : lwSingletonMonoBehaviour<HudManager>
         return tmp;
     }
 
+   
     public Vector2 ComputeHudPosFromWorldPosition(Vector3 vWorldPos, int playerId=0)
     {
         RectTransform CanvasRect = GetComponent<RectTransform>();
