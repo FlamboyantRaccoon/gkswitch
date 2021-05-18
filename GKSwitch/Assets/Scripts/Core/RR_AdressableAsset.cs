@@ -47,6 +47,11 @@ public class RR_AdressableAsset : lwSingletonMonoBehaviour<RR_AdressableAsset>
         Addressables.LoadAssetAsync<T>(assetReference).Completed += dlg;
     }
 
+    public void LoadAsset<T>(string key, System.Action<AsyncOperationHandle<T>> dlg) where T : UnityEngine.Object
+    {
+        Addressables.LoadAssetAsync<T>(key).Completed += dlg;
+    }
+
     public T Load<T>(string path ) where T : UnityEngine.Object
     {
 #if USE_ADRESSABLE

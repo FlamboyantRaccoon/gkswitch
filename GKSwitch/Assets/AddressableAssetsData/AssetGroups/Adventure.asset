@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Adventure
+  m_EditorClassIdentifier: 
+  m_GroupName: Adventure
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 070740ca0aae55f46845acbe2a4ee0d6
+  m_SerializeEntries:
+  - m_GUID: f2addc7bfb9e624488ff920aa820adf6
+    m_Address: Assets/FinalAssets/Adventure/MainPlaceRoot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 6317023503861761690, guid: f2addc7bfb9e624488ff920aa820adf6, type: 3}
+    m_TargetAsset: {fileID: 6317023503861761690, guid: f2addc7bfb9e624488ff920aa820adf6, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d915f45f3736f84c8c4366a0d76527d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 52da4e6b748a84c4aae0b6a01455b1fe, type: 2}
+    - {fileID: 11400000, guid: 2c1197966499fa84e86b1a0f690f4ead, type: 2}
