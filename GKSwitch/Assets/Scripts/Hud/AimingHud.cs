@@ -31,10 +31,22 @@ public class AimingHud : MonoBehaviour
             PlayerAim aim = GameObject.Instantiate<PlayerAim>(playerAimPrefab, transform);
             aim.Setup(i);
             m_aimDico.Add(players[i].Id, aim);
-            players[i].m_updateCursorDlg += UpdateCursor;
+            players[0].cursorAiming.addOnPosChangeDlg = CursorMove;
+//            players[i].m_updateCursorDlg += UpdateCursor;
         }
+
+  /*      PlayerAim aimFollow = GameObject.Instantiate<PlayerAim>(playerAimPrefab, transform);
+        aimFollow.Setup(3);
+        m_aimDico.Add(3, aimFollow);
+        players[0].cursorAiming.addOnPosChangeDlg = CursorMove;*/
+        
         m_rt = GetComponent<RectTransform>();
         m_bInitialized = true;
+    }
+
+    private void CursorMove(Vector2 v)
+    {
+        UpdateCursor(0, v);
     }
 
     public void Show()

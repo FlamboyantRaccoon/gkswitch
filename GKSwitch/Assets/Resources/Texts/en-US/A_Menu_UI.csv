@@ -7,3 +7,5 @@ str_flags_finished;
 str_controlInfo;
 str_controlCalibrate;
 str_controlConfirm;
+str_gameTournament;
+str_gameAdventure;

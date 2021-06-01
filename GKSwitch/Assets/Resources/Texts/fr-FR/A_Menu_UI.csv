@@ -7,3 +7,5 @@ str_flags_finished;FIN
 str_controlInfo;Teste ton curseur et valide quand tu es prêt ! Tu peux recalibrer en visant le centre de l'écran.
 str_controlCalibrate;Recalibrer
 str_controlConfirm;Prêt ! 
+str_gameTournament;Tournoi
+str_gameAdventure;Aventure

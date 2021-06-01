@@ -1,5 +1,5 @@
 ﻿
-#define USE_CHEATCODE
+//#define USE_CHEATCODE
 
 using System.Collections;
 using System.Collections.Generic;
