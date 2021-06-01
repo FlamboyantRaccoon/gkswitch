@@ -131,6 +131,10 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -436,7 +440,7 @@ PlayerSettings:
   switchLogoHandling: 0
   switchReleaseVersion: 0
   switchDisplayVersion: 1.0.0
-  switchStartupUserAccount: 0
+  switchStartupUserAccount: 1
   switchTouchScreenUsage: 0
   switchSupportedLanguagesMask: 0
   switchLogoType: 0
