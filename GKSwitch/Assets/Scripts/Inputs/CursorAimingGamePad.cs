@@ -9,6 +9,7 @@ public class CursorAimingGamePad : CursorAiming
     public override void UpdateVector(Vector2 v)
     {
         m_position = v;
+        m_onPositionChangeDlg?.Invoke(playerId, m_position);
     }
 
     public override Vector2 GetCursorPos()

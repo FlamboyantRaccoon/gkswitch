@@ -13,6 +13,7 @@ public class CursorAimingMouse : CursorAiming
         float fHalfHeight = Screen.height / 2f;
         m_position.x = (v.x - fHalfWidth) / fHalfWidth;
         m_position.y = (v.y - fHalfHeight) / fHalfHeight;
+        m_onPositionChangeDlg?.Invoke(playerId, m_position);
     }
 
     public override Vector2 GetCursorPos()

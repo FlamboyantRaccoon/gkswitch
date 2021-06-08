@@ -44,9 +44,9 @@ public class AimingHud : MonoBehaviour
         m_bInitialized = true;
     }
 
-    private void CursorMove(Vector2 v)
+    private void CursorMove(int playerId, Vector2 v)
     {
-        UpdateCursor(0, v);
+        UpdateCursor(playerId, v);
     }
 
     public void Show()

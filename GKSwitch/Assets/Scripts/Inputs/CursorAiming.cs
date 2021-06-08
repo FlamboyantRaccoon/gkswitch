@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CursorAiming : MonoBehaviour
 {
-    public delegate void OnPositionChange(Vector2 v);
+    public delegate void OnPositionChange(int id, Vector2 v);
 
     private const int SENSIBILITY_MIN = 0;
     private const int SENSIBILITY_MAX = 10;
 
+    public int playerId { set; get; }
     public int sensibility { get { return m_sensibility; } }
     public OnPositionChange addOnPosChangeDlg { set { m_onPositionChangeDlg += value; } }
     public OnPositionChange subOnPosChangeDlg { set { m_onPositionChangeDlg -= value; } }

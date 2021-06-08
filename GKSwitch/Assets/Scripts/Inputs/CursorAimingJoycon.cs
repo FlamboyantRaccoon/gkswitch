@@ -165,7 +165,7 @@ public class CursorAimingJoycon : CursorAiming
             Vector2 p = new Vector2(localHit.x * 2f, localHit.y * 2f);
             m_position = p;
             //            Debug.Log("m_position : " + m_position + " localHit " + localHit );
-            m_onPositionChangeDlg?.Invoke(m_position);
+            m_onPositionChangeDlg?.Invoke( playerId, m_position);
         }
 
         debugCube.transform.rotation = m_rawQuaternion;

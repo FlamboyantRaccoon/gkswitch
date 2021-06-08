@@ -31,6 +31,22 @@ public class MainMenuModeSelection : MainMenuStateObject
         ChangeMainMenuState(MainMenuHud.MainMenuState.ToastySelection);
     }
 
+    public void OnFreeMode()
+    {
+        BattleContext.instance.CreateGKPlayers();
+
+        int playerCount = BattleContext.instance.playerCount;
+        List<RRPlayerInput> players = RRInputManager.instance.playerList;
+        for (int i = 0; i < playerCount; i++)
+        {
+            GKPlayerData playerData = BattleContext.instance.GetPlayer(i);
+            playerData.sToastyId = "toa_basic";
+        }
+
+        //GameSingleton.instance.gameStateMachine.ChangeState(new MiniGameState());
+        ChangeMainMenuState(MainMenuHud.MainMenuState.FreeMiniGameSelection);
+    }
+
     public void OnAdventure()
     {
         HudManager.instance.ShowForeHud(HudManager.ForeHudType.genericTransition);

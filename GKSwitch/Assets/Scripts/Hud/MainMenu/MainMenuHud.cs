@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MainMenuHud : MonoBehaviour
 {
-    public enum MainMenuState {  none, mainSelection, ToastySelection, RulesSettings }
+    public enum MainMenuState {  none, mainSelection, ToastySelection, RulesSettings, FreeMiniGameSelection }
 
     [Serializable] private class MainMenuStateObjects : lwEnumArray<MainMenuState, MainMenuStateObject> { };
 

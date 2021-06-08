@@ -73,6 +73,7 @@ public class RRNavigationButton : MonoBehaviour
 
     public virtual void Select()
     {
+        Debug.Log("Select me " + gameObject.name);
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(gameObject);
     }
 

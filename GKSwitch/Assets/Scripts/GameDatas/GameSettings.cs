@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameSetting", menuName = "GameData/GameSetting", order = 1)]
 public class GameSettings : ScriptableObject
 {
+    [System.Serializable] public class MiniGameSprite : lwEnumArray<MiniGameManager.MiniGames, Sprite> { }; // dummy definition to use Unity serialization
+
     [System.Serializable]
     public class PlayerSetting
     {
@@ -15,5 +17,5 @@ public class GameSettings : ScriptableObject
     }
 
     public PlayerSetting[] playerSettings;
-
+    public MiniGameSprite m_miniGameSprites;
 }
